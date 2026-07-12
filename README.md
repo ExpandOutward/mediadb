@@ -1,2 +1,2 @@
-# mediadb
-A project created to expand my knowledge of APIs, Postman, and software testing.
+# Media Database
+I created this repository after taking a LinkedIn Learning training on Postman. 
