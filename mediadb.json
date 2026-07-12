@@ -1,0 +1,13 @@
+{
+  "media": {
+    "movies": [
+      { "title": "The Matrix", "genre": "Action", "year": "1999" }        
+    ],
+    "games": [
+      { "title": "Donkey Kong Country", "system": "SNES", "year": "1994" }
+    ],
+    "shows": [
+        { "title": "Tales From The Crypt", "genre": "Horror", "year": "1989" }
+    ]
+  }
+}
