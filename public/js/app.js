@@ -51,7 +51,7 @@ async function loadGames() {
         <tr>
           <td>${game.id}</td>
           <td>${game.title}</td>
-          <td>${game.system || game.genre}</td>
+          <td>${game.genre}</td>
           <td>${game.year}</td>
           <td>
             <button class="btn btn-sm btn-primary">Edit</button>
@@ -107,7 +107,7 @@ if (addGameForm) {
     
     const newGame = {
       title: document.getElementById('game-title').value,
-      system: document.getElementById('game-system').value,
+      system: document.getElementById('game-genre').value,
       year: document.getElementById('game-year').value
     };
 

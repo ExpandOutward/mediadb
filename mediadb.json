@@ -19,6 +19,12 @@
       "title": "Donkey Kong Country",
       "genre": "Action",
       "year": "1994"
+    },
+    {
+      "title": "Mortal Kombat",
+      "system": "Fighting",
+      "year": "1992",
+      "id": 2
     }
   ],
   "shows": [
