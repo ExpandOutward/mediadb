@@ -70,7 +70,7 @@ async function loadShows() {
     const tbody = document.getElementById('shows-table-body');
     tbody.innerHTML = '';
     
-    show.forEach(show => {
+    shows.forEach(show => {
       const row = `
         <tr>
           <td>${show.id}</td>
