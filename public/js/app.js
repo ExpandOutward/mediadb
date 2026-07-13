@@ -1,16 +1,12 @@
 const API_BASE = 'http://localhost:3000';
 
-// Tab switching
-document.getElementById('movies-tab').addEventListener('shown.bs.tab', loadMovies);
-document.getElementById('games-tab').addEventListener('shown.bs.tab', loadGames);
-document.getElementById('shows-tab').addEventListener('shown.bs.tab', loadShows);
-
-// Load Movies when page loads
+// Load data when page loads
 document.addEventListener('DOMContentLoaded', () => {
   loadMovies();
   loadGames();
-  loadShows();
 });
+
+// ==================== LOAD FUNCTIONS ====================
 
 async function loadMovies() {
   try {
@@ -18,7 +14,7 @@ async function loadMovies() {
     const movies = await response.json();
     
     const tbody = document.getElementById('movies-table-body');
-    tbody.innerHTML = ''; // Clear existing rows
+    tbody.innerHTML = '';
     
     movies.forEach(movie => {
       const row = `
@@ -35,7 +31,6 @@ async function loadMovies() {
       `;
       tbody.innerHTML += row;
     });
-    
   } catch (error) {
     console.error('Error loading movies:', error);
   }
@@ -69,88 +64,66 @@ async function loadGames() {
   }
 }
 
-async function loadShows() {
-  try {
-    const response = await fetch(`${API_BASE}/shows`);
-    const shows = await response.json();
+// ==================== FORM HANDLERS ====================
+
+// Add Movie
+const addMovieForm = document.getElementById('add-movie-form');
+if (addMovieForm) {
+  addMovieForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
     
-    const tbody = document.getElementById('shows-table-body');
-    tbody.innerHTML = '';
-    
-    shows.forEach(show => {
-      const row = `
-        <tr>
-          <td>${show.id}</td>
-          <td>${show.title}</td>
-          <td>${show.system || show.genre}</td>
-          <td>${show.year}</td>
-          <td>
-            <button class="btn btn-sm btn-primary">Edit</button>
-            <button class="btn btn-sm btn-danger">Delete</button>
-          </td>
-        </tr>
-      `;
-      tbody.innerHTML += row;
-    });
-  } catch (error) {
-    console.error('Error loading games:', error);
-  }
+    const newMovie = {
+      title: document.getElementById('movie-title').value,
+      genre: document.getElementById('movie-genre').value,
+      year: document.getElementById('movie-year').value
+    };
+
+    try {
+      const response = await fetch(`${API_BASE}/movies`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newMovie)
+      });
+
+      if (response.ok) {
+        addMovieForm.reset();
+        loadMovies();
+        alert('Movie added successfully!');
+      }
+    } catch (error) {
+      console.error('Error adding movie:', error);
+      alert('Error adding movie');
+    }
+  });
 }
 
-// Handle Add Movie Form
-document.getElementById('add-movie-form').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  
-  const newMovie = {
-    title: document.getElementById('movie-title').value,
-    genre: document.getElementById('movie-genre').value,
-    year: document.getElementById('movie-year').value
-  };
+// Add Game
+const addGameForm = document.getElementById('add-game-form');
+if (addGameForm) {
+  addGameForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const newGame = {
+      title: document.getElementById('game-title').value,
+      system: document.getElementById('game-system').value,
+      year: document.getElementById('game-year').value
+    };
 
-  try {
-    const response = await fetch(`${API_BASE}/movies`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newMovie)
-    });
+    try {
+      const response = await fetch(`${API_BASE}/games`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newGame)
+      });
 
-    if (response.ok) {
-      // Clear form
-      document.getElementById('add-movie-form').reset();
-      // Reload the table
-      loadMovies();
-      alert('Movie added successfully!');
+      if (response.ok) {
+        addGameForm.reset();
+        loadGames();
+        alert('Game added successfully!');
+      }
+    } catch (error) {
+      console.error('Error adding game:', error);
+      alert('Error adding game');
     }
-  } catch (error) {
-    console.error('Error adding movie:', error);
-    alert('Error adding movie');
-  }
-});
-
-// Handle Add Game Form
-document.getElementById('add-game-form').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  
-  const newGame = {
-    title: document.getElementById('game-title').value,
-    system: document.getElementById('game-system').value,
-    year: document.getElementById('game-year').value
-  };
-
-  try {
-    const response = await fetch(`${API_BASE}/games`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newGame)
-    });
-
-    if (response.ok) {
-      document.getElementById('add-game-form').reset();
-      loadGames();
-      alert('Game added successfully!');
-    }
-  } catch (error) {
-    console.error('Error adding game:', error);
-    alert('Error adding game');
-  }
-});
+  });
+}
