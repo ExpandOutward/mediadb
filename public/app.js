@@ -8,6 +8,8 @@ document.getElementById('shows-tab').addEventListener('shown.bs.tab', loadShows)
 // Load Movies when page loads
 document.addEventListener('DOMContentLoaded', () => {
   loadMovies();
+  loadGames();
+  loadShows();
 });
 
 async function loadMovies() {
