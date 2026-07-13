@@ -1,5 +1,10 @@
 const API_BASE = 'http://localhost:3000';
 
+// Tab switching
+document.getElementById('movies-tab').addEventListener('shown.bs.tab', loadMovies);
+document.getElementById('games-tab').addEventListener('shown.bs.tab', loadGames);
+document.getElementById('shows-tab').addEventListener('shown.bs.tab', loadShows);
+
 // Load Movies when page loads
 document.addEventListener('DOMContentLoaded', () => {
   loadMovies();
