@@ -4,220 +4,227 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Media Database</title>
-
 <!-- Bootstrap 5 CSS-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
       rel="stylesheet" 
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
       crossorigin="anonymous"></link>
-
 <!-- Bootstrap 5 JS Bundle (for modals, dropdowns, etc.) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
       crossorigin="anonymous"></script>
-
 <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    
+    <link rel="stylesheet" href="css/style.css">    
 </head>
-<body class="bg-dark text-light">
-  <h1>Media Database</h1>
-  <div class="container mt-5">
 
-<ul class="nav nav-tabs nav-fill mb-4" id="mediaTabs" role="tablist">
-  <li class="nav-item" role="presentation">
-    <button class="nav-link active bg-dark text-light border-secondary" 
+<body class="bg-dark text-light">
+<!-- Main Title--> 
+  <h1>Media Database</h1>
+<!-- Primary Container -->
+    <div class="container mt-5">
+
+<!-- Menu -->
+      <ul class="nav nav-tabs nav-fill mb-4" id="mediaTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active bg-dark text-light border-secondary" 
             id="movies-tab" 
             data-bs-toggle="tab" 
             data-bs-target="#movies" 
             type="button" 
             role="tab">
-      Movies
-    </button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link bg-dark text-light border-secondary" 
+            Movies
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link bg-dark text-light border-secondary" 
             id="games-tab" 
             data-bs-toggle="tab" 
             data-bs-target="#games" 
             type="button" 
             role="tab">
-      Games
-    </button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link bg-dark text-light border-secondary" 
+            Games
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link bg-dark text-light border-secondary" 
             id="shows-tab" 
             data-bs-toggle="tab" 
             data-bs-target="#shows" 
             type="button" 
             role="tab">
-      Shows
-    </button>
-  </li>
-</ul>
-
+            Shows
+          </button>
+        </li>
+      </ul>
 <!-- Tab Content -->
-<div class="tab-content" id="mediaTabContent">
-  <div class="tab-pane fade show active" id="movies" role="tabpanel">
-    <!-- Movies Table + Form will go here -->
-    <h3>Movies</h3>
-<div class="card bg-dark border-secondary mb-4">
-  <div class="card-header">
-    <h5 class="mb-0 text-light">Add New Movie</h5>
-  </div>
-  <div class="card-body">
-    <form id="add-movie-form">
-      <div class="row g-3">
-        <div class="col-md-4">
-          <label class="form-label text-light">Title</label>
-          <input type="text" class="form-control bg-dark text-light border-secondary" id="movie-title" required>
+    <div class="tab-content" id="mediaTabContent">
+
+<!-- Media Section | Titles, Forms, Tables -->
+
+<!-- Movie Section -->
+    <div class="tab-pane fade show active" id="movies" role="tabpanel">
+      <h3>Movies</h3>
+      <div class="card bg-dark border-secondary mb-4">
+        <div class="card-header">
+          <h5 class="mb-0 text-light">Add New Movie</h5>
         </div>
-        <div class="col-md-3">
-          <label class="form-label text-light">Genre</label>
-          <input type="text" class="form-control bg-dark text-light border-secondary" id="movie-genre" required>
-        </div>
-        <div class="col-md-2">
-          <label class="form-label text-light">Year</label>
-          <input type="number" class="form-control bg-dark text-light border-secondary" id="movie-year" required>
-        </div>
-        <div class="col-md-3 d-flex align-items-end">
-          <button type="submit" class="btn btn-success w-100">Add Movie</button>
+        <div class="card-body">
+          <form id="add-movie-form">
+            <div class="row g-3">
+              <div class="col-md-4">
+                <label class="form-label text-light">Title</label>
+                <input type="text" class="form-control bg-dark text-light border-secondary" id="movie-title" required>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label text-light">Genre</label>
+                <input type="text" class="form-control bg-dark text-light border-secondary" id="movie-genre" required>
+              </div>
+              <div class="col-md-2">
+                <label class="form-label text-light">Year</label>
+                <input type="number" class="form-control bg-dark text-light border-secondary" id="movie-year" required>
+              </div>
+              <div class="col-md-3 d-flex align-items-end">
+                <button type="submit" class="btn btn-success w-100">Add Movie</button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
-    </form>
-  </div>
-</div>
-  <table class="table table-dark table-striped table-hover">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Genre</th>
-        <th>Year</th>
-        <th>Actions</th>
-      </tr>    
-    </thead>
-<tbody id="movies-table-body">
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>
-<button class="btn btn-sm btn-primary">Edit</button>
-<button class="btn btn-sm btn-danger">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  </div>
+      <table class="table table-dark table-striped table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Year</th>
+            <th>Actions</th>
+          </tr>    
+        </thead>
+        <tbody id="movies-table-body">
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <button class="btn btn-sm btn-primary">Edit</button>
+              <button class="btn btn-sm btn-danger">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+<!-- Game Section -->
   <div class="tab-pane fade" id="games" role="tabpanel">
     <h3>Games</h3>
-<div class="card bg-dark border-secondary mb-4">
-  <div class="card-header">
-    <h5 class="mb-0 text-light">Add New Movie</h5>
-  </div>
-  <div class="card-body">
-    <form id="add-movie-form">
-      <div class="row g-3">
-        <div class="col-md-4">
-          <label class="form-label text-light">Title</label>
-          <input type="text" class="form-control bg-dark text-light border-secondary" id="movie-title" required>
-        </div>
-        <div class="col-md-3">
-          <label class="form-label text-light">Genre</label>
-          <input type="text" class="form-control bg-dark text-light border-secondary" id="movie-genre" required>
-        </div>
-        <div class="col-md-2">
-          <label class="form-label text-light">Year</label>
-          <input type="number" class="form-control bg-dark text-light border-secondary" id="movie-year" required>
-        </div>
-        <div class="col-md-3 d-flex align-items-end">
-          <button type="submit" class="btn btn-success w-100">Add Movie</button>
-        </div>
+    <div class="card bg-dark border-secondary mb-4">
+      <div class="card-header">
+        <h5 class="mb-0 text-light">Add New Movie</h5>
       </div>
-    </form>
+      <div class="card-body">
+        <form id="add-movie-form">
+          <div class="row g-3">
+            <div class="col-md-4">
+              <label class="form-label text-light">Title</label>
+              <input type="text" class="form-control bg-dark text-light border-secondary" id="movie-title" required>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label text-light">Genre</label>
+              <input type="text" class="form-control bg-dark text-light border-secondary" id="movie-genre" required>
+            </div>
+            <div class="col-md-2">
+              <label class="form-label text-light">Year</label>
+              <input type="number" class="form-control bg-dark text-light border-secondary" id="movie-year" required>
+            </div>
+            <div class="col-md-3 d-flex align-items-end">
+              <button type="submit" class="btn btn-success w-100">Add Movie</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <table class="table table-dark table-striped table-hover">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Genre</th>
+          <th>Year</th>
+          <th>Actions</th>
+        </tr>    
+      </thead>
+      <tbody id="games-table-body">
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>
+            <button class="btn btn-sm btn-primary">Edit</button>
+            <button class="btn btn-sm btn-danger">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-</div>
-  <table class="table table-dark table-striped table-hover">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Genre</th>
-        <th>Year</th>
-        <th>Actions</th>
-      </tr>    
-    </thead>
-<tbody id="games-table-body">
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>
-<button class="btn btn-sm btn-primary">Edit</button>
-<button class="btn btn-sm btn-danger">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  </div>
+
+  <!-- Show Section -->
   <div class="tab-pane fade" id="shows" role="tabpanel">
     <h3>Shows</h3>
-  <table class="table table-dark table-striped table-hover">
-<div class="card bg-dark border-secondary mb-4">
-  <div class="card-header">
-    <h5 class="mb-0 text-light">Add New Movie</h5>
-  </div>
-  <div class="card-body">
-    <form id="add-movie-form">
-      <div class="row g-3">
-        <div class="col-md-4">
-          <label class="form-label text-light">Title</label>
-          <input type="text" class="form-control bg-dark text-light border-secondary" id="movie-title" required>
+      <table class="table table-dark table-striped table-hover">
+        <div class="card bg-dark border-secondary mb-4">
+          <div class="card-header">
+            <h5 class="mb-0 text-light">Add New Movie</h5>
+          </div>
+          <div class="card-body">
+            <form id="add-movie-form">
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <label class="form-label text-light">Title</label>
+                  <input type="text" class="form-control bg-dark text-light border-secondary" id="movie-title" required>
+                </div>
+                <div class="col-md-3">
+                  <label class="form-label text-light">Genre</label>
+                  <input type="text" class="form-control bg-dark text-light border-secondary" id="movie-genre" required>
+                </div>
+                <div class="col-md-2">
+                  <label class="form-label text-light">Year</label>
+                  <input type="number" class="form-control bg-dark text-light border-secondary" id="movie-year" required>
+                </div>
+                <div class="col-md-3 d-flex align-items-end">
+                <button type="submit" class="btn btn-success w-100">Add Movie</button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
-        <div class="col-md-3">
-          <label class="form-label text-light">Genre</label>
-          <input type="text" class="form-control bg-dark text-light border-secondary" id="movie-genre" required>
-        </div>
-        <div class="col-md-2">
-          <label class="form-label text-light">Year</label>
-          <input type="number" class="form-control bg-dark text-light border-secondary" id="movie-year" required>
-        </div>
-        <div class="col-md-3 d-flex align-items-end">
-          <button type="submit" class="btn btn-success w-100">Add Movie</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Genre</th>
-        <th>Year</th>
-        <th>Actions</th>
-      </tr>    
-    </thead>
-<tbody id="shows-table-body">
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>
-<button class="btn btn-sm btn-primary">Edit</button>
-<button class="btn btn-sm btn-danger">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table> 
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Genre</th>
+          <th>Year</th>
+          <th>Actions</th>
+        </tr>    
+      </thead>
+      <tbody id="shows-table-body">
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>
+            <button class="btn btn-sm btn-primary">Edit</button>
+            <button class="btn btn-sm btn-danger">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table> 
   </div>
 </div>
 
 <script src="js/app.js"></script>
+
 </body>
 </html> 
