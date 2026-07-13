@@ -33,3 +33,59 @@ async function loadMovies() {
     console.error('Error loading movies:', error);
   }
 }
+
+async function loadGames() {
+  try {
+    const response = await fetch(`${API_BASE}/games`);
+    const games = await response.json();
+    
+    const tbody = document.getElementById('games-table-body');
+    tbody.innerHTML = '';
+    
+    games.forEach(game => {
+      const row = `
+        <tr>
+          <td>${game.id}</td>
+          <td>${game.title}</td>
+          <td>${game.system || game.genre}</td>
+          <td>${game.year}</td>
+          <td>
+            <button class="btn btn-sm btn-primary">Edit</button>
+            <button class="btn btn-sm btn-danger">Delete</button>
+          </td>
+        </tr>
+      `;
+      tbody.innerHTML += row;
+    });
+  } catch (error) {
+    console.error('Error loading games:', error);
+  }
+}
+
+async function loadShows() {
+  try {
+    const response = await fetch(`${API_BASE}/shows`);
+    const shows = await response.json();
+    
+    const tbody = document.getElementById('shows-table-body');
+    tbody.innerHTML = '';
+    
+    show.forEach(show => {
+      const row = `
+        <tr>
+          <td>${show.id}</td>
+          <td>${show.title}</td>
+          <td>${show.system || show.genre}</td>
+          <td>${show.year}</td>
+          <td>
+            <button class="btn btn-sm btn-primary">Edit</button>
+            <button class="btn btn-sm btn-danger">Delete</button>
+          </td>
+        </tr>
+      `;
+      tbody.innerHTML += row;
+    });
+  } catch (error) {
+    console.error('Error loading games:', error);
+  }
+}
