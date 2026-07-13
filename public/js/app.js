@@ -6,6 +6,7 @@ const API_BASE = 'http://localhost:3000';
 document.addEventListener('DOMContentLoaded', () => {
   loadMovies();
   loadGames();
+  loadShows();
 });
 
 // ==================== LOAD FUNCTIONS ====================
@@ -107,7 +108,7 @@ if (addGameForm) {
     
     const newGame = {
       title: document.getElementById('game-title').value,
-      system: document.getElementById('game-genre').value,
+      genre: document.getElementById('game-genre').value,
       year: document.getElementById('game-year').value
     };
 
@@ -126,6 +127,37 @@ if (addGameForm) {
     } catch (error) {
       console.error('Error adding game:', error);
       alert('Error adding game');
+    }
+  });
+}
+
+// Add Show
+const addShowForm = document.getElementById('add-show-form');
+if (addShowForm) {
+  addShowForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const newShow = {
+      title: document.getElementById('show-title').value,
+      genre: document.getElementById('show-genre').value,
+      year: document.getElementById('show-year').value
+    };
+
+    try {
+      const response = await fetch(`${API_BASE}/shows`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newShow)
+      });
+
+      if (response.ok) {
+        addShowForm.reset();
+        loadShows();
+        alert('Show added successfully!');
+      }
+    } catch (error) {
+      console.error('Error adding show:', error);
+      alert('Error adding show');
     }
   });
 }
