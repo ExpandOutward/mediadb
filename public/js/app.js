@@ -129,14 +129,3 @@ if (addGameForm) {
     }
   });
 }
-
-// Form submissions (event delegation - works even for hidden tabs)
-document.addEventListener('submit', async (e) => {
-  if (e.target.id === 'add-movie-form') {
-    e.preventDefault();
-    // paste your movie submit code here
-  } else if (e.target.id === 'add-game-form') {
-    e.preventDefault();
-    // paste your game submit code here
-  }
-});
