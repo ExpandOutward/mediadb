@@ -129,9 +129,9 @@ document.getElementById('add-movie-form').addEventListener('submit', async (e) =
 document.getElementById('add-game-form').addEventListener('submit', async (e) => {
   e.preventDefault();
   
-  const newMovie = {
+  const newGame = {
     title: document.getElementById('game-title').value,
-    genre: document.getElementById('game-genre').value,
+    system: document.getElementById('game-system').value,
     year: document.getElementById('game-year').value
   };
 
@@ -143,9 +143,7 @@ document.getElementById('add-game-form').addEventListener('submit', async (e) =>
     });
 
     if (response.ok) {
-      // Clear form
       document.getElementById('add-game-form').reset();
-      // Reload the table
       loadGames();
       alert('Game added successfully!');
     }
