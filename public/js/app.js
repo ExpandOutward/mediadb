@@ -1,6 +1,5 @@
-console.log('app.js loaded successfully');
-
 const API_BASE = 'http://localhost:3000';
+// LEARNED: Delcaring the API_BASE variable as a URL prevents repeating the URL in every fetch() global function.
 
 // Load data when page loads
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   loadGames();
   loadShows();
 });
+// LEARNED: The load functions pre-populate each table. Otherwise, they will be blank until a tab is clicked.
 
 // ==================== LOAD FUNCTIONS ====================
 
@@ -38,6 +38,10 @@ async function loadMovies() {
     console.error('Error loading movies:', error);
   }
 }
+// LEARNED: Async allows us to use "await," which waits for the server response.
+// LEARNED: Without async and await, we'd need a bunch of .then() chains. Async is cleaner.
+// LEARNED: Const is used to declare the variables because the actual variables are not reassigned.
+// LEARNED: Editing the content is not variable reassignment. The variables themselves do not change.
 
 async function loadGames() {
   try {
@@ -221,6 +225,8 @@ document.addEventListener('click', async (e) => {
     }
   }
 });
+// LEARNED: Closest refers to the closest defined element to the button. <tr> in this case.
+// REMEMBER: I need to remember that we are removing data from a JSON file, not deleting a row.
 
 // Edit Movie
 document.addEventListener('click', (e) => {
