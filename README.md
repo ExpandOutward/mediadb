@@ -1,6 +1,5 @@
 # Media Database
-I created this project as a portfolio piece to showcase my skillset, approach to work, and approach to learning. I wanted a sandbox primarily to expand my Postman / API knowledge and skillset. I was inspired to start this project after completing the [Postman Essential Training]
-(https://www.linkedin.com/learning/postman-essential-training-21969591) course via LinkedIn Learning.
+I created this project as a portfolio piece to showcase my skillset, approach to work, and approach to learning. I wanted a sandbox primarily to expand my Postman / API knowledge and skillset. I was inspired to start this project after completing the [Postman Essential Training](https://www.linkedin.com/learning/postman-essential-training-21969591) course via LinkedIn Learning.
 
 This project is broken down into 5 phases.
 
@@ -8,8 +7,7 @@ This project is broken down into 5 phases.
 I started by connecting Grok AI with my GitHub account. I then created a Project with this Repository linked as the source and I laid out my end-to-end plan. I have experience building front end applications from scratch but had no idea how I would implement API elements. I gave Grok a description of the kind of project I wanted to build and then followed its lead.
 
 ## Phase 2: Build [Complete]
-I used the information that I learned from [Postman Essential Training]
-(https://www.linkedin.com/learning/postman-essential-training-21969591) to create the API test collection in Postman. I then used both Grok AI and my pre-existing web development knowledge to build out the front end. I specifically asked Grok to implement some technologies that I was not very familiar with to maximize my learning effort.
+I used the information that I learned from [Postman Essential Training](https://www.linkedin.com/learning/postman-essential-training-21969591) to create the API test collection in Postman. I then used both Grok AI and my pre-existing web development knowledge to build out the front end. I specifically asked Grok to implement some technologies that I was not very familiar with to maximize my learning effort.
 
 ## Phase 3: Patch Knowledge Gaps [In Progress]
 Once the front end and API tests were functional, I went through each of the files line by line and consulted Grok AI on any learning gaps. I have included comments in the files that outline things that I learned during this phase.
