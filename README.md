@@ -23,10 +23,15 @@ Grok AI creates an issue based on defective behavior or missing functionality us
 
 #### Template
 Title:  
+
 Issue Description:  
+
 Expected Functionality:  
+
 Current Behavior:   
+
 Steps To Reproduce:   
+
 Business Impact:   
 
 #### Example Prompts
