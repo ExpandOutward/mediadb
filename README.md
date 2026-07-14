@@ -22,12 +22,12 @@ This is an on-going phase with no defined end. In this phase, Grok AI acts as a 
 Grok AI creates an issue based on defective behavior or missing functionality using a pre-defined template.
 
 #### Template
-Title:
-Issue Description:
-Expected Functionality:
-Current Behavior: 
-Steps To Reproduce: 
-Business Impact: 
+Title:  
+Issue Description:  
+Expected Functionality:  
+Current Behavior:   
+Steps To Reproduce:   
+Business Impact:   
 
 #### Example Prompts
 
