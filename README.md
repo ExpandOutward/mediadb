@@ -60,3 +60,4 @@ Once the issue is resolved and the AI customer agrees to closure, I will consult
 - npm
 - Git / GitHub
 - Knowledge Centered Services (KCS)
+- Markdown 

@@ -67,5 +67,5 @@ The Media Database contains multiple media-types organized in respective tabs. T
 ### Issue: No data is showing in the tables
 
 #### Is JSON Server running? 
-- Visit URL [http://127.0.0.1:3000/public/index.html](localhost:3000) in your browser
+- Visit URL [http://http://localhost:3000/](localhost:3000) in your browser
     - This site can't be reached (or similar verbiage): JSON Server is not running
