@@ -1,5 +1,4 @@
-# Media Database
-## User Guide
+# Media Database User Guide
 A database application that allows users to add, edit, and delete titles based on their media type.
 
 ## Index
@@ -8,6 +7,7 @@ A database application that allows users to add, edit, and delete titles based o
 - Navigation
 - Functionality
 - Troubleshooting
+- Additional Help
 
 ## Prerequisites
 - Basic computer / command line skills
@@ -23,14 +23,14 @@ A database application that allows users to add, edit, and delete titles based o
 3. Open terminal / command prompt and point to the unzipped folder
 4. Run `npm install`, which will install JSON Server on your machine
 5. Run `npm start`, which will run JSON Server on your machine
-6. Open `public/index.html` or visit URL [http://127.0.0.1:3000/public/index.html](http://127.0.0.1:3000/public/index.html)
+6. Open `public/index.html` or visit URL [http://localhost:3000](http://localhost:3000)
 7. Verify that content is showing in the respective tables
 
 ### Navigation
 The Media Database contains multiple media-types organized in respective tabs. The Movies tab is the default tab that will load upon opening the application. Click the tabs to load tables containing data for each respective media type.
 
 ## Functionality
-**Important**: JSON Server MUST be running in order for movies to be displayed, added, edited, or deleted.
+**Important**: JSON Server MUST be running in order for content to be displayed, added, edited, or deleted.
 
 ### Display Content
 1. The user opens the application or clicks a tab
@@ -40,7 +40,7 @@ The Media Database contains multiple media-types organized in respective tabs. T
 ### Add Content
 1. Click into the tab respective to the media type that you would like to add
 2. Input a title, genre, and the year that the content was published
-3. Click the green **Add Movie button**
+3. Click the green **Add** button respective to your selected content type
 4. A POST request is sent to JSON Server which adds the content to the `mediadb.json` file
 5. A confirmation message will confirm that the content has been successfully added, click **OK**
 6. A follow up GET request is sent to display the new data
@@ -67,5 +67,33 @@ The Media Database contains multiple media-types organized in respective tabs. T
 ### Issue: No data is showing in the tables
 
 #### Is JSON Server running? 
-- Visit URL [http://http://localhost:3000/](localhost:3000) in your browser
-    - This site can't be reached (or similar verbiage): JSON Server is not running
+- Open terminal / command prompt
+- Navigate to the root application folder
+- Run npm start
+- Visit [http://localhost:3000](http://localhost:3000)
+    - If the content loads, JSON Server was not running.
+    - If the content does not load, proceed with troubleshooting.
+
+## Additional Help
+
+### Terminal / Command Prompt
+Terminal / Command Prompt is a command line interface that requires typed commands. The following commands are necessary in regard to this application.
+- `cd` (change directory): Typing cd followed by a folder or file path will navigate to the typed directory
+- `cd..` (Windows) / `cd ..` (Linux): Goes back one folder
+- `cd\` Goes back to root
+- `dir` Lists all of the directories and files in the current directory
+
+**Directory Path**: Documents > Projects > mediadb
+
+**Method 1**: Navigate to one folder at a time.
+```bash
+cd Documents
+cd Projects
+cd mediadb
+```
+
+**Method 2**: Navigate directly to the desired folder.
+```bash
+cd Documents/Projects/mediadb
+```
+
