@@ -36,9 +36,9 @@ Business Impact:
 
 #### Example Prompts
 
-**New Chat**: Request a new functionality from the perspective of a business user who has very little technical know-how. You have not read DOCUMENTATION.md because you find it to be confusing. Ask follow up questions if I say anything that would confuse a non-technical user. After creating the issue, do not update it with new information or comments. I want this simulation for force me to add all of the details to the Issue as they become available to demonstrate attention to detail and ensuring that all details are where they need to be.
+**New Chat**: Request a new functionality from the perspective of a business user who has very little technical know-how. You have not read USER_GUIDE.md because you find it to be confusing. Ask follow up questions if I say anything that would confuse a non-technical user. After creating the issue, do not update it with new information or comments. I want this simulation for force me to add all of the details to the Issue as they become available to demonstrate attention to detail and ensuring that all details are where they need to be.
 
-**New Chat**: Find something in the application that could work better. You are reasonably technical, impatient, and you're having a bad week. You want tangible results and you want to work with somebody who understands your frustration. You see right through BS and you'll call me on it if you think I'm dragging you along or trying to buy time. You have read DOCUMENTATION.md and you'll hold me to it. 
+**New Chat**: Find something in the application that could work better. You are reasonably technical, impatient, and you're having a bad week. You want tangible results and you want to work with somebody who understands your frustration. You see right through BS and you'll call me on it if you think I'm dragging you along or trying to buy time. You have read USER_GUIDE.md and you'll hold me to it. 
 
 ### Phase 5-2: Support the Customer
 In this phase, I will continue working with Grok via text chat, voice chat, through Grok's Issue comments, or a combination of all 3. 
@@ -49,7 +49,7 @@ Once the issue is resolved and the AI customer agrees to closure, I will consult
 - How would you grade my overall interaction with you and what can I do to improve?
 - What is the most important takeaway regarding our interaction in light of my career goals?
 
-## Technologies
+## Technologies / Skills
 - Generative AI
 - Postman
 - APIs
@@ -59,3 +59,4 @@ Once the issue is resolved and the AI customer agrees to closure, I will consult
 - Bootstrap 5
 - npm
 - Git / GitHub
+- Knowledge Centered Services (KCS)
