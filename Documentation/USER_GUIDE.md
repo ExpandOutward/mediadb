@@ -1,6 +1,9 @@
 # Media Database User Guide
 A database application that allows users to add, edit, and delete titles based on their media type.
 
+**Document Version**: Pre-release  
+**Date**: N/A
+
 ## Index
 - Prerequisites
 - Steps to Install and Run
