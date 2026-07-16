@@ -1,63 +1,29 @@
-# Media Database
-I created this project as a portfolio piece to showcase my skillset, approach to work, and approach to learning. I wanted a sandbox primarily to expand my Postman / API knowledge and skillset. I was inspired to start this project after completing the [Postman Essential Training](https://www.linkedin.com/learning/postman-essential-training-21969591) course via LinkedIn Learning.
+# My Top 10 - A Customer Support Simulation
+My Top 10 is a simple web application that acts as a focal point in a larger initiative. My goal with this project is to build out a simulated support environment as a portfolio piece to help me stand out to recruiters and hiring managers. I want to highlight that I use AI as a tutor, not a cheat sheet. If I have to ask "what" then I also ask "why." 
 
-This project is broken down into 5 phases.
+## 1. Design, Build, and Learn
+I came up with the idea for My Top 10 after taking [Postman Essential Training](https://www.linkedin.com/learning/postman-essential-training-21969591/) on LinkedIn learning. I connected Grok AI to my GitHub and presented the idea, using Grok as an assistant as I built the application. I went back through each file and line of code to consult Grok AI on any misunderstandings or learning gaps.
 
-## Phase 1: Generative AI [Complete]
-I started by connecting Grok AI with my GitHub account. I then created a Project with this Repository linked as the source and I laid out my end-to-end plan. I have experience building front end applications from scratch but had no idea how I would implement API elements. I gave Grok a description of the kind of project I wanted to build and then followed its lead.
+### Skills
+HTML5, CSS3, JavaScript (ES6), Bootstrap 5, Git, GitHub, APIs, Postman, Visual Studio Code, Generative AI
 
-## Phase 2: Build [Complete]
-I used the information that I learned from [Postman Essential Training](https://www.linkedin.com/learning/postman-essential-training-21969591) to create the API test collection in Postman. I then used both Grok AI and my pre-existing web development knowledge to build out the front end. I specifically asked Grok to implement some technologies that I was not very familiar with to maximize my learning effort.
+## 2. Document
 
-## Phase 3: Patch Knowledge Gaps [In Progress]
-Once the front end and API tests were functional, I went through each of the files line by line and consulted Grok AI on any learning gaps. I have included comments in the files that outline things that I learned during this phase.
+In addition to the standard `README.md` file, I have created API and User guides which can be found in the [Documents](https://github.com/ExpandOutward/My-Top-10/tree/main/Documentation) folder of this repository. `USER_GUIDE.md` provides download, installation, and usage instructions for the front end. `API_GUIDE.md` provides instructions on setting up and using Postman. 
 
-## Phase 4: Documentation [In Progress]
-With the application being fully functional and my understanding of the logic and reasoning behind our approach, my next step is to ensure that the README.md file is updated, outlining the project. DOCUMENTATION.md will act as the product guide.
+### Skills
+Documentation, Knowledge-Centered Service, Markdown, Generative AI
 
-## Phase 5: Customer Support Simulation / Continuous Learning [Not Started]
-This is an on-going phase with no defined end. In this phase, Grok AI acts as a diverse range of customer archetypes and creates Issues using a pre-defiend template. The template acts as fields that customers would fill out when filing a ticket. Grok's job is to think of enhancements and then create a GitHub issue as if it were filing a ticket. I then take ownership of the Issue and work on it as if I was working on an issue for a customer.
+## 3. Support
+With the application fully deployed and initial documentation complete, I can request Grok AI to create issues in GitHub to simulate a customer support scenario. My goal is to place myself in unpredictable support scenarios with varying degrees of pressure and difficulty. Once each issue is resolved, my final step is to highlight areas of potential improvement. I ask Grok AI for 3 recommendations for each resolved issue on how I could have improved the experience.
 
-### Phase 5-1: Grok Creates Issue (Customer Files Ticket)
-Grok AI creates an issue based on defective behavior or missing functionality using a pre-defined template.
+### Example Prompts
 
-#### Template
-Title:  
+*"Please check my code and find an enhancement. In this simulation your name is Fred. You will act as a casual business user who isn't very technical but does enjoy learning and appreciates in depth descriptions told to you in a way that you can understand. This will be a chat based conversation using the existing chat window."*
 
-Issue Description:  
+*"Please check my code and find something that needs to be optimized. Your name is Jason. You are highly technical and somewhat agitated. If I try to buy time or come across like I don't know what I'm doing, you will call me on it. My goal is to both complete the optimization and improve your perspective / mood. This will be an audio chat using the existing chat window. It is possible that more than one call will be needed."*
 
-Expected Functionality:  
+*"Please make up an issue that could happen on the user end if the do not install the application properly. I have no way of reproducing the issue. Your name is Laurie. You're very casual and responsive. Please outline the issue in email format right here in this chat. I will also respond as if I am writing emails to simulate email support."*
 
-Current Behavior:   
-
-Steps To Reproduce:   
-
-Business Impact:   
-
-#### Example Prompts
-
-**New Chat**: Request a new functionality from the perspective of a business user who has very little technical know-how. You have not read USER_GUIDE.md because you find it to be confusing. Ask follow up questions if I say anything that would confuse a non-technical user. After creating the issue, do not update it with new information or comments. I want this simulation for force me to add all of the details to the Issue as they become available to demonstrate attention to detail and ensuring that all details are where they need to be.
-
-**New Chat**: Find something in the application that could work better. You are reasonably technical, impatient, and you're having a bad week. You want tangible results and you want to work with somebody who understands your frustration. You see right through BS and you'll call me on it if you think I'm dragging you along or trying to buy time. You have read USER_GUIDE.md and you'll hold me to it. 
-
-### Phase 5-2: Support the Customer
-In this phase, I will continue working with Grok via text chat, voice chat, through Grok's Issue comments, or a combination of all 3. 
-
-### Phase 5-3: Expand / Improve
-Once the issue is resolved and the AI customer agrees to closure, I will consult Grok AI for advice on how I could have handled the situation better. 
-- What knowledge gaps prevented me from resolving this issue sooner?
-- How would you grade my overall interaction with you and what can I do to improve?
-- What is the most important takeaway regarding our interaction in light of my career goals?
-
-## Technologies / Skills
-- Generative AI
-- Postman
-- APIs
-- HTML5
-- CSS3
-- JavaScript (ES6+)
-- Bootstrap 5
-- npm
-- Git / GitHub
-- Knowledge Centered Services (KCS)
-- Markdown 
+### Skills
+Customer Support, Application Support, Chat Support, Email Support, Phone Support, Generative AI
