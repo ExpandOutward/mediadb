@@ -1,4 +1,4 @@
-# Media Database API Guide
+# My Top 10 - API Guide
 
 **Version**: Pre-Release  
 **Date**: N/A
@@ -48,7 +48,24 @@ Postman can be used to pull, create, edit, and delete data contained within the 
 The GET Movies API pulls all movies from the `mediadb.json` file and displays them in the Postman response body.
 
 **Method**: GET  
-**URL**: http://localhost:3000/movies
+**URL**: http://localhost:3000/movies  
+**Example Response**:
+```JSON
+[
+    {
+        "title": "The Matrix",
+        "genre": "Action",
+        "year": "1999",
+        "id": 1
+    },
+    {
+        "title": "Halloween",
+        "genre": "Horror",
+        "year": "1978",
+        "id": 2
+    }
+]
+```
 
 ### GET A Movie
 
@@ -56,32 +73,69 @@ The GET A Movie API pulls a single movie from the `mediadb.json` file respective
 
 **Method**: GET  
 **URL**: http://localhost:3000/movies/#
+- **Note**: Replace the `#` with the `id` of the movie.  
+
+**Example**: http://localhost:3000/movies/1    
+**Example Response**:
+```JSON
+{
+    "title": "The Matrix",
+    "genre": "Action",
+    "year": "1999",
+    "id": 1
+}
+```
 
 ### POST A Movie
 
 **Method**: POST  
-**URL**: http://localhost:3000/movies
+**URL**: http://localhost:3000/movies  
+**Body**:
 
 ```JSON
 {
-    "id": 0-998,
+    "id": 1-10,
     "title": "Text String Here",
     "genre": "Text String Here",
     "year": 0000 - 2999
 }
 ```
 
+**Example Response**:
+```JSON 
+{
+    "id": 3,
+    "title": "Obsession",
+    "genre": "Horror",
+    "year": 2026
+}
+```
+
 ### Update A Movie
 
 **Method**: PUT  
-**URL**: http://localhost:3000/movies/#
+**URL**: http://localhost:3000/movies/#  
+- **Note**: Replace the `#` with the `id` of the movie.  
+
+**Example**: http://localhost:3000/movies/1    
+**Example Response**:
 **Body:**
 ```JSON
 {
-    "id": 0-998,
+    "id": 1-10,
     "title": "Text String Here",
     "genre": "Text String Here",
     "year": 0000 - 2999
+}
+```
+**Example Response**:
+
+```JSON 
+{
+    "id": 5,
+    "title": "Bloodsport",
+    "genre": "Action",
+    "year": 1988
 }
 ```
 
@@ -89,22 +143,66 @@ The GET A Movie API pulls a single movie from the `mediadb.json` file respective
 
 **Method**: DELETE  
 **URL**: http://localhost:3000/movies/#
+- **Note**: Replace the `#` with the `id` of the movie.  
+
+**Example**: http://localhost:3000/movies/1    
+**Example Response**:
+
+```JSON 
+{}
+```
 
 ## Game APIs
 
 ### GET Games
 The GET Games API pulls all games from the `mediadb.json` file and displays them in the Postman response body.
 
+**Method**: GET  
+**URL**: http://localhost:3000/movies  
+**Example Response**:
+```JSON
+[
+    {
+        "title": "Donkey Kong Country",
+        "genre": "Action",
+        "year": "1994",
+        "id": 1
+    },
+    {
+        "title": "Mortal Kombat",
+        "genre": "Fighting",
+        "year": "1992",
+        "id": 2
+    }
+]
+```
+
 ### GET A Game
 
 The GET A Game API pulls a single game from the `mediadb.json` file respective to the id and displays it in the response body.
+
+
+**Method**: GET  
+**URL**: http://localhost:3000/movies/#
+- **Note**: Replace the `#` with the `id` of the movie.  
+
+**Example**: http://localhost:3000/movies/1    
+**Example Response**:
+```JSON
+{
+    "title": "Donkey Kong Country",
+    "genre": "Action",
+    "year": "1994",
+    "id": 1
+}
+```
 
 ### POST A Game
 
 **Body:**
 ```JSON
 {
-    "id": 0-998,
+    "id": 1-10,
     "title": "Text String Here",
     "genre": "Text String Here",
     "year": 0000 - 2999
@@ -116,7 +214,7 @@ The GET A Game API pulls a single game from the `mediadb.json` file respective t
 **Body:**
 ```JSON
 {
-    "id": 0-998,
+    "id": 1-10,
     "title": "Text String Here",
     "genre": "Text String Here",
     "year": 0000 - 2999
