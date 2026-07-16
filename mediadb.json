@@ -11,6 +11,54 @@
       "genre": "Horror",
       "year": "1978",
       "id": 2
+    },
+    {
+      "title": "Mortal Kombat",
+      "genre": "Action",
+      "year": "1992",
+      "id": 3
+    },
+    {
+      "title": "Test",
+      "genre": "Test",
+      "year": "1993",
+      "id": 4
+    },
+    {
+      "title": "Test",
+      "genre": "Test",
+      "year": "1994",
+      "id": 5
+    },
+    {
+      "title": "Test",
+      "genre": "Test",
+      "year": "1998",
+      "id": 6
+    },
+    {
+      "title": "Test",
+      "genre": "Test",
+      "year": "1970",
+      "id": 7
+    },
+    {
+      "title": "Test",
+      "genre": "Test",
+      "year": "1991",
+      "id": 8
+    },
+    {
+      "title": "Test",
+      "genre": "Test",
+      "year": "1997",
+      "id": 9
+    },
+    {
+      "title": "Something",
+      "genre": "Else",
+      "year": "1992",
+      "id": 10
     }
   ],
   "games": [
@@ -25,6 +73,54 @@
       "genre": "Fighting",
       "year": "1992",
       "id": 2
+    },
+    {
+      "title": "Game 3",
+      "genre": "Fighting",
+      "year": "1993",
+      "id": 3
+    },
+    {
+      "title": "Game 4",
+      "genre": "RPG",
+      "year": "1994",
+      "id": 4
+    },
+    {
+      "title": "Game 5",
+      "genre": "Action",
+      "year": "1995",
+      "id": 5
+    },
+    {
+      "title": "Game 6",
+      "genre": "Puzzle",
+      "year": "1996",
+      "id": 6
+    },
+    {
+      "title": "Game 7",
+      "genre": "Sports",
+      "year": "1997",
+      "id": 7
+    },
+    {
+      "title": "Game 8",
+      "genre": "Racing",
+      "year": "1998",
+      "id": 8
+    },
+    {
+      "title": "Game 9",
+      "genre": "Horror",
+      "year": "1999",
+      "id": 9
+    },
+    {
+      "title": "Game 10",
+      "genre": "Action",
+      "year": "2000",
+      "id": 10
     }
   ],
   "shows": [
@@ -39,6 +135,54 @@
       "genre": "Mystery",
       "year": "2002",
       "id": 2
+    },
+    {
+      "title": "Show 3",
+      "genre": "Comedy",
+      "year": "1993",
+      "id": 3
+    },
+    {
+      "title": "Show 4",
+      "genre": "Romance",
+      "year": "1994",
+      "id": 4
+    },
+    {
+      "title": "Show 5",
+      "genre": "Action",
+      "year": "1995",
+      "id": 5
+    },
+    {
+      "title": "Show 6",
+      "genre": "Comedy",
+      "year": "1996",
+      "id": 6
+    },
+    {
+      "title": "Show 7",
+      "genre": "Comedy",
+      "year": "1997",
+      "id": 7
+    },
+    {
+      "title": "Show 8",
+      "genre": "Talk",
+      "year": "1998",
+      "id": 8
+    },
+    {
+      "title": "Show 9",
+      "genre": "Sports",
+      "year": "1999",
+      "id": 9
+    },
+    {
+      "title": "Show 10",
+      "genre": "Adventure",
+      "year": "2000",
+      "id": 10
     }
   ]
 }

@@ -11,6 +11,7 @@ The Release Roadmap contains information on future releases, including features,
 #### Planned Changes
 - Move from JSON Server to Express.js for full backend control, better validation, and database features.
     - Update documentation to reflect the move.
+    - Add rules to prevent adding more than 10 rows for each media object via API
 
 ## Version 1
 ### July 2026

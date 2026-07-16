@@ -1,6 +1,10 @@
 const API_BASE = 'http://localhost:3000';
 // LEARNED: Delcaring the API_BASE variable as a URL prevents repeating the URL in every fetch() global function.
 
+let movies = [];
+let games = [];
+let shows = [];
+
 // Load data when page loads
 document.addEventListener('DOMContentLoaded', () => {
   loadMovies();
@@ -29,7 +33,7 @@ document.getElementById('edit-show-year').min = 1500;
 async function loadMovies() {
   try {
     const response = await fetch(`${API_BASE}/movies`);
-    const movies = await response.json();
+    movies = await response.json();
     
     const tbody = document.getElementById('movies-table-body');
     tbody.innerHTML = '';
@@ -61,7 +65,7 @@ async function loadMovies() {
 async function loadGames() {
   try {
     const response = await fetch(`${API_BASE}/games`);
-    const games = await response.json();
+    games = await response.json();
     
     const tbody = document.getElementById('games-table-body');
     tbody.innerHTML = '';
@@ -89,7 +93,7 @@ async function loadGames() {
 async function loadShows() {
   try {
     const response = await fetch(`${API_BASE}/shows`);
-    const shows = await response.json();
+    shows = await response.json();
     
     const tbody = document.getElementById('shows-table-body');
     tbody.innerHTML = '';
@@ -121,7 +125,14 @@ const addMovieForm = document.getElementById('add-movie-form');
 if (addMovieForm) {
   addMovieForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
+  
+  if (movies.length >= 10) {
+    alert("Maximum of 10 movies reached!");
+    return;
+  }
+// LEARNED: This code is simple enough. The "movies" variable was initially declared here, but needed to be declared
+// globally
+
     const newMovie = {
       title: document.getElementById('movie-title').value,
       genre: document.getElementById('movie-genre').value,
@@ -153,6 +164,10 @@ if (addGameForm) {
   addGameForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
+    if (games.length >= 10) {
+      alert("Maximum of 10 movies reached!");
+    return;
+  }    
     const newGame = {
       title: document.getElementById('game-title').value,
       genre: document.getElementById('game-genre').value,
@@ -183,6 +198,11 @@ const addShowForm = document.getElementById('add-show-form');
 if (addShowForm) {
   addShowForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    if (shows.length >= 10) {
+    alert("Maximum of 10 movies reached!");
+    return;
+    }
     
     const newShow = {
       title: document.getElementById('show-title').value,
