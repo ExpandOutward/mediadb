@@ -9,7 +9,7 @@
 - Game APIs 
 - Show APIs
 - Environment Variables
-- Tests
+- Testing
 
 ## Postman Instructions
 Postman can be used to pull, create, edit, and delete data contained within the Media Database application. Postman can also be used to run various tests. 
@@ -87,6 +87,7 @@ The GET A Movie API pulls a single movie from the `mediadb.json` file respective
 ```
 
 ### POST A Movie
+The POST A Movie API sends an object to the `mediadb.json`, adding it to the movies object.
 
 **Method**: POST  
 **URL**: http://localhost:3000/movies  
@@ -94,10 +95,9 @@ The GET A Movie API pulls a single movie from the `mediadb.json` file respective
 
 ```JSON
 {
-    "id": 1-10,
     "title": "Text String Here",
     "genre": "Text String Here",
-    "year": 0000 - 2999
+    "year": 1500 - Current Year
 }
 ```
 
@@ -112,6 +112,7 @@ The GET A Movie API pulls a single movie from the `mediadb.json` file respective
 ```
 
 ### Update A Movie
+The Update A Movie API sends a PUT request the `mediadb.json`, updating the movie object respective to the id included in the URL.
 
 **Method**: PUT  
 **URL**: http://localhost:3000/movies/#  
@@ -125,7 +126,7 @@ The GET A Movie API pulls a single movie from the `mediadb.json` file respective
     "id": 1-10,
     "title": "Text String Here",
     "genre": "Text String Here",
-    "year": 0000 - 2999
+    "year": 1500 - Current Year
 }
 ```
 **Example Response**:
@@ -140,6 +141,8 @@ The GET A Movie API pulls a single movie from the `mediadb.json` file respective
 ```
 
 ### Delete A Movie
+The Delete A Movie API sends a DELETE request the `mediadb.json`, deleting the movie object respective to the id included in the URL.
+
 
 **Method**: DELETE  
 **URL**: http://localhost:3000/movies/#
@@ -158,7 +161,7 @@ The GET A Movie API pulls a single movie from the `mediadb.json` file respective
 The GET Games API pulls all games from the `mediadb.json` file and displays them in the Postman response body.
 
 **Method**: GET  
-**URL**: http://localhost:3000/movies  
+**URL**: http://localhost:3000/games  
 **Example Response**:
 ```JSON
 [
@@ -183,10 +186,10 @@ The GET A Game API pulls a single game from the `mediadb.json` file respective t
 
 
 **Method**: GET  
-**URL**: http://localhost:3000/movies/#
+**URL**: http://localhost:3000/games/#
 - **Note**: Replace the `#` with the `id` of the movie.  
 
-**Example**: http://localhost:3000/movies/1    
+**Example**: http://localhost:3000/games/1    
 **Example Response**:
 ```JSON
 {
@@ -199,61 +202,184 @@ The GET A Game API pulls a single game from the `mediadb.json` file respective t
 
 ### POST A Game
 
-**Body:**
+The POST A Game API sends an object to the `mediadb.json`, adding it to the games object.
+
+**Method**: POST  
+**URL**: http://localhost:3000/games  
+**Body**:
 ```JSON
 {
-    "id": 1-10,
     "title": "Text String Here",
     "genre": "Text String Here",
-    "year": 0000 - 2999
+    "year": 1500 - Current Year
 }
+```
+**Example Response**:
+```JSON
+{
+    "title": "Resident Evil",
+    "genre": "Survival Horror",
+    "year": "1996",
+    "id": 3
+}
+
 ```
 
 ### Update A Game
 
+The Update A Game API sends a PUT request the `mediadb.json`, updating the game object respective to the id included in the URL.
+
+**Method**: PUT  
+**URL**: http://localhost:3000/games/#  
+- **Note**: Replace the `#` with the `id` of the movie.  
+
+**Example**: http://localhost:3000/games/1    
+**Example Response**:
 **Body:**
 ```JSON
 {
     "id": 1-10,
     "title": "Text String Here",
     "genre": "Text String Here",
-    "year": 0000 - 2999
+    "year": 1500 - Current Year
+}
+```
+**Example Response**:
+
+```JSON 
+{
+    "id": 5,
+    "title": "Mortal Kombat",
+    "genre": "Fighting",
+    "year": 1992
 }
 ```
 
 ### Delete A Game
+The Delete A Game API sends a DELETE request the `mediadb.json`, deleting the game object respective to the id included in the URL.
+
+**Method**: DELETE  
+**URL**: http://localhost:3000/games/#
+- **Note**: Replace the `#` with the `id` of the movie.  
+
+**Example**: http://localhost:3000/games/1    
+**Example Response**:
+
+```JSON 
+{}
+```
 
 ## Show APIs
 
 ### GET Shows
 The GET Shows API pulls all shows from the `mediadb.json` file and displays them in the Postman response body.
 
+**Method**: GET  
+**URL**: http://localhost:3000/shows  
+**Example Response**:
+```JSON
+[
+    {
+        "title": "Tales From The Crypt",
+        "genre": "Horror",
+        "year": "1988",
+        "id": 1
+    },
+    {
+        "title": "LOST",
+        "genre": "Mystery",
+        "year": "2002",
+        "id": 2
+    }
+]
+```
+
 ### GET A Show
 
 The GET A Movie API pulls a single movie from the `mediadb.json` file respective to the id and displays it in the response body.
 
-### POST A Show
+**Method**: GET  
+**URL**: http://localhost:3000/games/#
+- **Note**: Replace the `#` with the `id` of the movie.  
 
-**Body:**
+**Example**: http://localhost:3000/games/1    
+**Example Response**:
 ```JSON
-{
-    "id": 0-998,
-    "title": "Text String Here",
-    "genre": "Text String Here",
-    "year": 0000 - 2999
-}
+    {
+        "title": "Tales From The Crypt",
+        "genre": "Horror",
+        "year": "1988",
+        "id": 1
+    }
 ```
 
+### POST A Show
+
+The POST A Show API sends an object to the `mediadb.json`, adding it to the shows object.
+
+**Method**: POST  
+**URL**: http://localhost:3000/shows  
+**Body**:
+```JSON
+{
+    "title": "Text String Here",
+    "genre": "Text String Here",
+    "year": 1500 - Current Year
+}
+```
+**Example Response**:
+```JSON
+{
+    "title": "Widow's Bay",
+    "genre": "Horror",
+    "year": "2026",
+    "id": 3
+}
+```
 ### Update A Show
 
+The Update A Show API sends a PUT request the `mediadb.json`, updating the show object respective to the id included in the URL.
+
+**Method**: PUT  
+**URL**: http://localhost:3000/games/#  
+- **Note**: Replace the `#` with the `id` of the movie.  
+
+**Example**: http://localhost:3000/games/1    
+**Example Response**:
 **Body:**
 ```JSON
 {
-    "id": 0-998,
+    "id": 1-10,
     "title": "Text String Here",
     "genre": "Text String Here",
-    "year": 0000 - 2999
+    "year": 1500 - Current Year
+}
+```
+**Example Response**:
+
+```JSON 
+{
+    "id": 5,
+    "title": "Married With Children",
+    "genre": "Comedy",
+    "year": 1987
 }
 ```
 
 ### Delete A Show
+The Delete A Show API sends a DELETE request the `mediadb.json`, deleting the show object respective to the id included in the URL.
+
+**Method**: DELETE  
+**URL**: http://localhost:3000/shows/#
+- **Note**: Replace the `#` with the `id` of the movie.  
+
+**Example**: http://localhost:3000/shows/1    
+**Example Response**:
+
+```JSON 
+{}
+```
+
+## Environment Variables
+
+## Testing
