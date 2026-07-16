@@ -1,5 +1,5 @@
-# Media Database User Guide
-A database application that allows users to add, edit, and delete titles based on their media type.
+# My Top 10 - User Guide
+A database application that allows users build and display their 10 Ten lists based on their chosen media type.
 
 **Document Version**: Pre-release  
 **Date**: N/A
@@ -19,7 +19,7 @@ A database application that allows users to add, edit, and delete titles based o
 - Modern web browser 
 
 ## Steps to Install and Run
-1. Download the Media Database URL from [GitHub](https://github.com/ExpandOutward/mediadb)
+1. Download the My Top 10 ZIP [GitHub](https://github.com/ExpandOutward/My-Top-10)
     1. Click the **green Code button**
     2. Click the **Download ZIP** URL
 2. Unzip the file
@@ -30,7 +30,7 @@ A database application that allows users to add, edit, and delete titles based o
 7. Verify that content is showing in the respective tables
 
 ### Navigation
-The Media Database contains multiple media-types organized in respective tabs. The Movies tab is the default tab that will load upon opening the application. Click the tabs to load tables containing data for each respective media type.
+My Top 10 contains multiple media-types organized in respective tabs. The Movies tab is the default tab that will load upon opening the application. Click the tabs to load tables containing data for each respective media type.
 
 ## Functionality
 **Important**: JSON Server MUST be running in order for content to be displayed, added, edited, or deleted.
@@ -92,11 +92,11 @@ Terminal / Command Prompt is a command line interface that requires typed comman
 ```bash
 cd Documents
 cd Projects
-cd mediadb
+cd My-Top-10
 ```
 
 **Method 2**: Navigate directly to the desired folder.
 ```bash
-cd Documents/Projects/mediadb
+cd Documents/Projects/My-Top-10
 ```
 

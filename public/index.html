@@ -184,15 +184,15 @@
               <div class="row g-3">
                 <div class="col-md-4">
                   <label class="form-label text-light">Title</label>
-                  <input type="text" class="form-control bg-dark text-light border-secondary" id="show-title" required>
+                  <input type="text" mind="1500" class="form-control bg-dark text-light border-secondary" id="show-title" required>
                 </div>
                 <div class="col-md-3">
                   <label class="form-label text-light">Genre</label>
-                  <input type="text" class="form-control bg-dark text-light border-secondary" id="show-genre" required>
+                  <input type="text" min="1500" class="form-control bg-dark text-light border-secondary" id="show-genre" required>
                 </div>
                 <div class="col-md-2">
                   <label class="form-label text-light">Year</label>
-                  <input type="number" class="form-control bg-dark text-light border-secondary" id="show-year" required>
+                  <input type="number" min="1500" class="form-control bg-dark text-light border-secondary" id="show-year" required>
                 </div>
                 <div class="col-md-3 d-flex align-items-end">
                 <button type="submit" class="btn btn-success w-100">Add Show</button>
@@ -258,6 +258,9 @@
     </div>
   </div>
 </div>
+
+<!-- LEARNED: Edit modals are created dynamically from JS, so adding min values here will not work. -->
+<!-- LEARNED: Must add the min restrictions to app.js.-->
 
 <!-- Edit Game Modal -->
 <div class="modal fade" id="editGameModal" tabindex="-1">

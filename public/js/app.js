@@ -6,6 +6,21 @@ document.addEventListener('DOMContentLoaded', () => {
   loadMovies();
   loadGames();
   loadShows();
+
+// Set the current year as the maximum value for all create and edit fields
+  const currentYear = new Date().getFullYear();
+  
+  document.getElementById('movie-year').max = currentYear;
+  document.getElementById('game-year').max = currentYear;
+  document.getElementById('show-year').max = currentYear;
+  document.getElementById('edit-movie-year').max = currentYear;
+  document.getElementById('edit-game-year').max = currentYear;
+  document.getElementById('edit-show-year').max = currentYear;
+
+// Set the minimum value for year in edit fields to 1500
+document.getElementById('edit-movie-year').min = 1500;
+document.getElementById('edit-game-year').min = 1500;
+document.getElementById('edit-show-year').min = 1500;
 });
 // LEARNED: The load functions pre-populate each table. Otherwise, they will be blank until a tab is clicked.
 
