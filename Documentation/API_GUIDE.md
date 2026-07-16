@@ -1,15 +1,17 @@
 # My Top 10 - API Guide
 
-**Version**: Pre-Release  
-**Date**: N/A
+**Version**: 1  
+**Date**: July 2026  
+[Version History](#version-history)
 
 ## Index
-- Postman Instructions
-- Movie APIs
-- Game APIs 
-- Show APIs
-- Environment Variables
-- Testing
+- [Postman Instructions](#postman-instructions)
+- [Movie APIs](#movie-apis)
+- [Game APIs](#game-apis)
+- [Show APIs](#show-apis)
+- [Environment Variables](#environment-variables)
+- [Testing](#testing)
+- [Version History](#version-history)
 
 ## Postman Instructions
 Postman can be used to pull, create, edit, and delete data contained within the Media Database application. Postman can also be used to run various tests. 
@@ -381,5 +383,55 @@ The Delete A Show API sends a DELETE request the `mediadb.json`, deleting the sh
 ```
 
 ## Environment Variables
+Environment variables can be accessed through the Environments tab in Postman. Environment variables are used to automatically insert values into API payloads for efficiency, testing, or security. In the context of My Top 10, environment variables are used primarily for testing.
+
+The following variables are set in the `My top 10.postman_environment.json` file.
+
+| Key | Value | Description |
+|----------|----------|----------|
+| base_url   | http://localhost:3000     | Allows us to use {{base_url}} in place of the logical URL     |
+| movie_id | 999     | Creates movie object with id 999 for testing     |
+| game_id   | 999     | Creates game object with id 999 for testing     |
+| show_id | 999     | Creates show objecct with id 999 for testing     |
+
+**Important**: Ensure that the My Top 10 environment is selected in Postman at the top right corner of the screen. This is a necessary step to use the variables in Postman collections.
 
 ## Testing
+
+As of this writing, there are two tests configured at the parent level of the My Top 10 Postman collection.
+
+Access the tests by clicking the **My Top 10** parent folder inside of Postman and then the **Scripts** tab.
+
+### Test 1: Status code must be 200 or 201
+This test will pass if a status code of 200 or 201 is returned when running each API.
+```JavaScript
+pm.test("Status code is successful (200 or 201)", function () {
+    const status = pm.response.code;
+    pm.expect(status).to.be.oneOf([200, 201]);
+});
+```
+
+### Test 2: Response time is less than 3000ms (3 seconds)
+This test will pass if the response is returned within 3 seconds.
+```JavaScript
+pm.test("Response time is less than 3000ms", function () {
+    pm.expect(pm.response.responseTime).to.be.below(3000);
+});
+```
+**Note:** The tests configured at the parent level will run every time an API within it is run.
+
+### Variable Context
+We have set `movie_id`, `game_id`, and `show_id` to `999` so that the data on the top 10 list is not impacted during testing. We can run each API by running the entire collection. The APIs will run in order and perform the following actions:
+- GET object
+- GET the object with id = 1
+- POST a new object with id = 999
+- UPDATE object with id = 999
+- DELETE object with id = 999
+
+Each API will return test results.
+
+## Version History
+
+### Version 1
+#### July 2026
+- **16**: Initial document published

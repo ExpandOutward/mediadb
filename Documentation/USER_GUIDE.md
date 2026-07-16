@@ -1,16 +1,18 @@
 # My Top 10 - User Guide
 A database application that allows users build and display their 10 Ten lists based on their chosen media type.
 
-**Document Version**: Pre-release  
-**Date**: N/A
+**Document Version**: 1  
+**Date**: N/A  
+[Version History](#version-history)
 
 ## Index
-- Prerequisites
-- Steps to Install and Run
-- Navigation
-- Functionality
-- Troubleshooting
-- Additional Help
+- [Prerequisites](#prerequisites)
+- [Steps to Install and Run](#steps-to-install-and-run)
+- [Navigation](#navigation)
+- [Functionality](#functionality)
+- [Troubleshooting](#troubleshooting)
+- [Additional Help](#additional-help)
+- [Version History](#version-history)
 
 ## Prerequisites
 - Basic computer / command line skills
@@ -100,3 +102,9 @@ cd My-Top-10
 cd Documents/Projects/My-Top-10
 ```
 
+## Version History
+
+### Version 1
+#### July 2026
+
+- **16**: Initial document published
