@@ -1,5 +1,5 @@
 {
-  "name": "mediadb",
+  "name": "My Top 10",
   "version": "1.0.0",
   "description": "A media database API built with json-server for learning REST APIs and Postman testing.",
 "scripts": {

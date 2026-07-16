@@ -27,8 +27,8 @@ Postman can be used to pull, create, edit, and delete data contained within the 
 - In Postman, click the **Import** button at the top right of the screen
 - Navigate to the unzipped file > Postman
 - Select both of the files listed below
-    - MediaDB API.postman_collection.json
-    - MediaDB.postman_environment.json
+    - `My Top 10 API.postman_collection.json`
+    - `My Top 10.postman_environment.json`
 - In Postman, click into the Collections tab to ensure that the collection has been successfully imported
     - MediaDB API as the Parent folder
     - movies, games, shows as Child folders
