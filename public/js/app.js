@@ -33,8 +33,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('edit-game-year').min = 1500;
   document.getElementById('edit-show-year').min = 1500;
 
-  document.getElementById('login-btn').addEventListener('click', () => handleAuth('login'));
+  document.getElementById('login-btn').addEventListener('click', () => handleAuth());
   document.getElementById('logout-btn').addEventListener('click', handleLogout);
+  document.getElementById('change-password-btn').addEventListener('click', () => {
+    document.getElementById('current-password').value = '';
+    document.getElementById('new-password').value = '';
+    document.getElementById('confirm-password').value = '';
+    document.getElementById('change-password-error').hidden = true;
+    new bootstrap.Modal(document.getElementById('changePasswordModal')).show();
+  });
+  document.getElementById('save-password-btn').addEventListener('click', handleChangePassword);
 
   await checkSession();
 });
@@ -64,7 +72,7 @@ function showApp() {
   document.getElementById('auth-panel').hidden = true;
   document.getElementById('app-panel').hidden = false;
   document.getElementById('user-label').textContent = currentUser
-    ? `Signed in as ${currentUser.email}`
+    ? `Signed in as ${currentUser.username}`
     : '';
   loadMovies();
   loadGames();
@@ -84,18 +92,18 @@ function setAuthError(message) {
 
 async function handleAuth() {
   setAuthError('');
-  const email = document.getElementById('auth-email').value.trim();
+  const username = document.getElementById('auth-username').value.trim();
   const password = document.getElementById('auth-password').value;
 
-  if (!email || !password) {
-    setAuthError('Email and password are required.');
+  if (!username || !password) {
+    setAuthError('Username and password are required.');
     return;
   }
 
   try {
     const response = await apiFetch('/auth/login', {
       method: 'POST',
-      body: JSON.stringify({ email, password })
+      body: JSON.stringify({ username, password })
     });
     const data = await response.json().catch(() => ({}));
 
@@ -110,6 +118,53 @@ async function handleAuth() {
   } catch (error) {
     console.error('Auth error:', error);
     setAuthError('Network error. Try again.');
+  }
+}
+
+async function handleChangePassword() {
+  const errorEl = document.getElementById('change-password-error');
+  errorEl.hidden = true;
+  errorEl.textContent = '';
+
+  const currentPassword = document.getElementById('current-password').value;
+  const newPassword = document.getElementById('new-password').value;
+  const confirmPassword = document.getElementById('confirm-password').value;
+
+  if (!currentPassword || !newPassword || !confirmPassword) {
+    errorEl.textContent = 'All fields are required.';
+    errorEl.hidden = false;
+    return;
+  }
+  if (newPassword.length < 8) {
+    errorEl.textContent = 'New password must be at least 8 characters.';
+    errorEl.hidden = false;
+    return;
+  }
+  if (newPassword !== confirmPassword) {
+    errorEl.textContent = 'New passwords do not match.';
+    errorEl.hidden = false;
+    return;
+  }
+
+  try {
+    const response = await apiFetch('/auth/change-password', {
+      method: 'POST',
+      body: JSON.stringify({ currentPassword, newPassword })
+    });
+    const data = await response.json().catch(() => ({}));
+
+    if (!response.ok) {
+      errorEl.textContent = data.error || 'Could not change password';
+      errorEl.hidden = false;
+      return;
+    }
+
+    bootstrap.Modal.getInstance(document.getElementById('changePasswordModal')).hide();
+    alert('Password updated successfully.');
+  } catch (error) {
+    console.error('Change password error:', error);
+    errorEl.textContent = 'Network error. Try again.';
+    errorEl.hidden = false;
   }
 }
 
