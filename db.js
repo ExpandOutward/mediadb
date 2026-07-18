@@ -1,14 +1,11 @@
 const { Pool } = require('pg');
 
-// Render (and most hosts) provide the connection string as DATABASE_URL.
-// Locally you can set the same variable in a .env file later.
+// Render provides DATABASE_URL on the web service.
+// Always use SSL with Render Postgres (internal or external).
 const pool = process.env.DATABASE_URL
   ? new Pool({
       connectionString: process.env.DATABASE_URL,
-      // Render Postgres often needs SSL from outside; internal URL may not.
-      ssl: process.env.DATABASE_URL.includes('render.com')
-        ? { rejectUnauthorized: false }
-        : false
+      ssl: { rejectUnauthorized: false }
     })
   : null;
 
@@ -24,8 +21,8 @@ async function checkConnection() {
     return { ok: false, error: 'DATABASE_URL is not set' };
   }
   try {
-    const result = await pool.query('SELECT 1 AS ok');
-    return { ok: result.rows[0].ok === 1 };
+    await pool.query('SELECT 1');
+    return { ok: true };
   } catch (err) {
     return { ok: false, error: err.message };
   }

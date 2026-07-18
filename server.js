@@ -85,7 +85,7 @@ app.get('/health', async (req, res) => {
   res.status(db.ok ? 200 : 503).json({
     status: db.ok ? 'ok' : 'degraded',
     database: db.ok ? 'connected' : 'error',
-    ...(db.error ? { error: db.error } : {})
+    error: db.error || null
   });
 });
 
