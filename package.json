@@ -1,12 +1,12 @@
 {
   "name": "My Top 10",
-  "version": "1.0.0",
-  "description": "A media database API built with json-server for learning REST APIs and Postman testing.",
-"scripts": {
-  "start": "json-server --watch mediadb.json --port 3000 --delay 500 --static ./public",
-  "dev": "json-server --watch mediadb.json --port 3000 --delay 500"
-},
+  "version": "2.0.0",
+  "description": "A media database API built with Express for learning REST APIs and Postman testing.",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
   "dependencies": {
-    "json-server": "^0.17.4"
+    "express": "^5.2.1"
   }
 }
