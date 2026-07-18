@@ -1,13 +1,44 @@
 const express = require('express');
+const session = require('express-session');
+const pgSession = require('connect-pg-simple')(session);
 const fs = require('fs');
 const path = require('path');
-const { checkConnection } = require('./db');
+const { checkConnection, getPool } = require('./db');
 const { ensureSchema } = require('./schema');
+const { registerAuthRoutes } = require('./auth');
 
 const app = express();
 
+// Needed so secure cookies work behind Render's proxy
+app.set('trust proxy', 1);
+
 // Parse JSON bodies on POST/PUT
 app.use(express.json());
+
+// Sessions stored in Postgres when DATABASE_URL is available
+const sessionConfig = {
+  secret: process.env.SESSION_SECRET || 'dev-only-change-me',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production' || Boolean(process.env.RENDER),
+    sameSite: 'lax'
+  }
+};
+
+const pool = getPool();
+if (pool) {
+  sessionConfig.store = new pgSession({
+    pool,
+    createTableIfMissing: true
+  });
+}
+
+app.use(session(sessionConfig));
+
+registerAuthRoutes(app);
 
 // Add a Movie
 app.post('/movies', (req, res) => {
