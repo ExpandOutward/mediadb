@@ -1,6 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const { checkConnection } = require('./db');
 
 const app = express();
 
@@ -79,8 +80,13 @@ app.post('/shows', (req, res) => {
   res.status(201).json(newShow);
 });
 
-app.get('/health', (req, res) => {
-  res.json({ status: 'ok' });
+app.get('/health', async (req, res) => {
+  const db = await checkConnection();
+  res.status(db.ok ? 200 : 503).json({
+    status: db.ok ? 'ok' : 'degraded',
+    database: db.ok ? 'connected' : 'error',
+    ...(db.error ? { error: db.error } : {})
+  });
 });
 
 // Delete a Movie
