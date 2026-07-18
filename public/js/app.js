@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:3000';
+const API_BASE = '';
 // LEARNED: Delcaring the API_BASE variable as a URL prevents repeating the URL in every fetch() global function.
 
 let movies = [];
