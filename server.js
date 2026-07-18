@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const { checkConnection } = require('./db');
+const { ensureSchema } = require('./schema');
 
 const app = express();
 
@@ -81,12 +82,39 @@ app.post('/shows', (req, res) => {
 });
 
 app.get('/health', async (req, res) => {
-  const db = await checkConnection();
-  res.status(db.ok ? 200 : 503).json({
-    status: db.ok ? 'ok' : 'degraded',
-    database: db.ok ? 'connected' : 'error',
-    error: db.error || null
-  });
+  try {
+    const db = await checkConnection();
+    let tables = null;
+    if (db.ok) {
+      try {
+        const { query } = require('./db');
+        const result = await query(`
+          SELECT table_name
+          FROM information_schema.tables
+          WHERE table_schema = 'public'
+            AND table_name IN ('users', 'movies', 'games', 'shows')
+          ORDER BY table_name
+        `);
+        tables = result.rows.map((row) => row.table_name);
+      } catch (tableErr) {
+        tables = { error: tableErr.message };
+      }
+    }
+    res.status(db.ok ? 200 : 503).json({
+      status: db.ok ? 'ok' : 'degraded',
+      database: db.ok ? 'connected' : 'error',
+      databaseUrlConfigured: Boolean(process.env.DATABASE_URL),
+      tables,
+      error: db.error
+    });
+  } catch (err) {
+    res.status(503).json({
+      status: 'degraded',
+      database: 'error',
+      databaseUrlConfigured: Boolean(process.env.DATABASE_URL),
+      error: err.message || String(err)
+    });
+  }
 });
 
 // Delete a Movie
@@ -222,6 +250,18 @@ app.get('/shows', (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+async function start() {
+  try {
+    await ensureSchema();
+    console.log('Database tables ready');
+  } catch (err) {
+    console.error('Failed to create database tables:', err.message);
+    // Still start the server so /health can show the error
+  }
+
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
+}
+
+start();

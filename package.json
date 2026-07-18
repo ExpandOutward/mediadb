@@ -4,7 +4,8 @@
   "description": "A media database API built with Express for learning REST APIs and Postman testing.",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "db:setup": "node -e \"require('./schema').ensureSchema().then(()=>{console.log('Tables ready');process.exit(0)}).catch(e=>{console.error(e);process.exit(1)})\""
   },
   "dependencies": {
     "express": "^5.2.1",
