@@ -1,19 +1,27 @@
 const API_BASE = '';
-// LEARNED: Delcaring the API_BASE variable as a URL prevents repeating the URL in every fetch() global function.
+// LEARNED: Empty API_BASE uses the same host (local or Render).
 
 let movies = [];
 let games = [];
 let shows = [];
+let currentUser = null;
+
+// Send session cookie with every request
+function apiFetch(url, options = {}) {
+  return fetch(`${API_BASE}${url}`, {
+    ...options,
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+      ...(options.headers || {})
+    }
+  });
+}
 
 // Load data when page loads
-document.addEventListener('DOMContentLoaded', () => {
-  loadMovies();
-  loadGames();
-  loadShows();
-
-// Set the current year as the maximum value for all create and edit fields
+document.addEventListener('DOMContentLoaded', async () => {
   const currentYear = new Date().getFullYear();
-  
+
   document.getElementById('movie-year').max = currentYear;
   document.getElementById('game-year').max = currentYear;
   document.getElementById('show-year').max = currentYear;
@@ -21,25 +29,118 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('edit-game-year').max = currentYear;
   document.getElementById('edit-show-year').max = currentYear;
 
-// Set the minimum value for year in edit fields to 1500
-document.getElementById('edit-movie-year').min = 1500;
-document.getElementById('edit-game-year').min = 1500;
-document.getElementById('edit-show-year').min = 1500;
+  document.getElementById('edit-movie-year').min = 1500;
+  document.getElementById('edit-game-year').min = 1500;
+  document.getElementById('edit-show-year').min = 1500;
+
+  document.getElementById('login-btn').addEventListener('click', () => handleAuth('login'));
+  document.getElementById('register-btn').addEventListener('click', () => handleAuth('register'));
+  document.getElementById('logout-btn').addEventListener('click', handleLogout);
+
+  await checkSession();
 });
-// LEARNED: The load functions pre-populate each table. Otherwise, they will be blank until a tab is clicked.
+
+async function checkSession() {
+  try {
+    const response = await apiFetch('/auth/me');
+    if (response.ok) {
+      currentUser = await response.json();
+      showApp();
+    } else {
+      showAuth();
+    }
+  } catch (error) {
+    console.error('Session check failed:', error);
+    showAuth();
+  }
+}
+
+function showAuth() {
+  currentUser = null;
+  document.getElementById('auth-panel').hidden = false;
+  document.getElementById('app-panel').hidden = true;
+}
+
+function showApp() {
+  document.getElementById('auth-panel').hidden = true;
+  document.getElementById('app-panel').hidden = false;
+  document.getElementById('user-label').textContent = currentUser
+    ? `Signed in as ${currentUser.email}`
+    : '';
+  loadMovies();
+  loadGames();
+  loadShows();
+}
+
+function setAuthError(message) {
+  const el = document.getElementById('auth-error');
+  if (!message) {
+    el.hidden = true;
+    el.textContent = '';
+    return;
+  }
+  el.hidden = false;
+  el.textContent = message;
+}
+
+async function handleAuth(mode) {
+  setAuthError('');
+  const email = document.getElementById('auth-email').value.trim();
+  const password = document.getElementById('auth-password').value;
+
+  if (!email || !password) {
+    setAuthError('Email and password are required.');
+    return;
+  }
+
+  const path = mode === 'register' ? '/auth/register' : '/auth/login';
+  try {
+    const response = await apiFetch(path, {
+      method: 'POST',
+      body: JSON.stringify({ email, password })
+    });
+    const data = await response.json().catch(() => ({}));
+
+    if (!response.ok) {
+      setAuthError(data.error || 'Authentication failed');
+      return;
+    }
+
+    currentUser = data;
+    document.getElementById('auth-password').value = '';
+    showApp();
+  } catch (error) {
+    console.error('Auth error:', error);
+    setAuthError('Network error. Try again.');
+  }
+}
+
+async function handleLogout() {
+  try {
+    await apiFetch('/auth/logout', { method: 'POST' });
+  } catch (error) {
+    console.error('Logout error:', error);
+  }
+  showAuth();
+}
 
 // ==================== LOAD FUNCTIONS ====================
 
 async function loadMovies() {
   try {
-    const response = await fetch(`${API_BASE}/movies`);
+    const response = await apiFetch('/movies');
+    if (response.status === 401) {
+      showAuth();
+      return;
+    }
     movies = await response.json();
-    
+    if (!Array.isArray(movies)) movies = [];
+
     const tbody = document.getElementById('movies-table-body');
     tbody.innerHTML = '';
-    
-    movies.forEach(movie => {
-      const row = `
+
+    movies.forEach((movie) => {
+      tbody.innerHTML += `
         <tr>
           <td>${movie.id}</td>
           <td>${movie.title}</td>
@@ -51,27 +152,27 @@ async function loadMovies() {
           </td>
         </tr>
       `;
-      tbody.innerHTML += row;
     });
   } catch (error) {
     console.error('Error loading movies:', error);
   }
 }
-// LEARNED: Async allows us to use "await," which waits for the server response.
-// LEARNED: Without async and await, we'd need a bunch of .then() chains. Async is cleaner.
-// LEARNED: Const is used to declare the variables because the actual variables are not reassigned.
-// LEARNED: Editing the content is not variable reassignment. The variables themselves do not change.
 
 async function loadGames() {
   try {
-    const response = await fetch(`${API_BASE}/games`);
+    const response = await apiFetch('/games');
+    if (response.status === 401) {
+      showAuth();
+      return;
+    }
     games = await response.json();
-    
+    if (!Array.isArray(games)) games = [];
+
     const tbody = document.getElementById('games-table-body');
     tbody.innerHTML = '';
-    
-    games.forEach(game => {
-      const row = `
+
+    games.forEach((game) => {
+      tbody.innerHTML += `
         <tr>
           <td>${game.id}</td>
           <td>${game.title}</td>
@@ -83,7 +184,6 @@ async function loadGames() {
           </td>
         </tr>
       `;
-      tbody.innerHTML += row;
     });
   } catch (error) {
     console.error('Error loading games:', error);
@@ -92,14 +192,19 @@ async function loadGames() {
 
 async function loadShows() {
   try {
-    const response = await fetch(`${API_BASE}/shows`);
+    const response = await apiFetch('/shows');
+    if (response.status === 401) {
+      showAuth();
+      return;
+    }
     shows = await response.json();
-    
+    if (!Array.isArray(shows)) shows = [];
+
     const tbody = document.getElementById('shows-table-body');
     tbody.innerHTML = '';
-    
-    shows.forEach(show => {
-      const row = `
+
+    shows.forEach((show) => {
+      tbody.innerHTML += `
         <tr>
           <td>${show.id}</td>
           <td>${show.title}</td>
@@ -111,7 +216,6 @@ async function loadShows() {
           </td>
         </tr>
       `;
-      tbody.innerHTML += row;
     });
   } catch (error) {
     console.error('Error loading shows:', error);
@@ -120,18 +224,15 @@ async function loadShows() {
 
 // ==================== FORM HANDLERS ====================
 
-// Add Movie
 const addMovieForm = document.getElementById('add-movie-form');
 if (addMovieForm) {
   addMovieForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-  
-  if (movies.length >= 10) {
-    alert("Maximum of 10 movies reached!");
-    return;
-  }
-// LEARNED: This code is simple enough. The "movies" variable was initially declared here, but needed to be declared
-// globally
+
+    if (movies.length >= 10) {
+      alert('Maximum of 10 movies reached!');
+      return;
+    }
 
     const newMovie = {
       title: document.getElementById('movie-title').value,
@@ -140,16 +241,18 @@ if (addMovieForm) {
     };
 
     try {
-      const response = await fetch(`${API_BASE}/movies`, {
+      const response = await apiFetch('/movies', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newMovie)
       });
+      const data = await response.json().catch(() => ({}));
 
       if (response.ok) {
         addMovieForm.reset();
         loadMovies();
         alert('Movie added successfully!');
+      } else {
+        alert(data.error || 'Error adding movie');
       }
     } catch (error) {
       console.error('Error adding movie:', error);
@@ -158,16 +261,16 @@ if (addMovieForm) {
   });
 }
 
-// Add Game
 const addGameForm = document.getElementById('add-game-form');
 if (addGameForm) {
   addGameForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
+
     if (games.length >= 10) {
-      alert("Maximum of 10 movies reached!");
-    return;
-  }    
+      alert('Maximum of 10 games reached!');
+      return;
+    }
+
     const newGame = {
       title: document.getElementById('game-title').value,
       genre: document.getElementById('game-genre').value,
@@ -175,16 +278,18 @@ if (addGameForm) {
     };
 
     try {
-      const response = await fetch(`${API_BASE}/games`, {
+      const response = await apiFetch('/games', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newGame)
       });
+      const data = await response.json().catch(() => ({}));
 
       if (response.ok) {
         addGameForm.reset();
         loadGames();
         alert('Game added successfully!');
+      } else {
+        alert(data.error || 'Error adding game');
       }
     } catch (error) {
       console.error('Error adding game:', error);
@@ -193,17 +298,16 @@ if (addGameForm) {
   });
 }
 
-// Add Show
 const addShowForm = document.getElementById('add-show-form');
 if (addShowForm) {
   addShowForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     if (shows.length >= 10) {
-    alert("Maximum of 10 movies reached!");
-    return;
+      alert('Maximum of 10 shows reached!');
+      return;
     }
-    
+
     const newShow = {
       title: document.getElementById('show-title').value,
       genre: document.getElementById('show-genre').value,
@@ -211,16 +315,18 @@ if (addShowForm) {
     };
 
     try {
-      const response = await fetch(`${API_BASE}/shows`, {
+      const response = await apiFetch('/shows', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newShow)
       });
+      const data = await response.json().catch(() => ({}));
 
       if (response.ok) {
         addShowForm.reset();
         loadShows();
         alert('Show added successfully!');
+      } else {
+        alert(data.error || 'Error adding show');
       }
     } catch (error) {
       console.error('Error adding show:', error);
@@ -236,23 +342,22 @@ document.addEventListener('click', async (e) => {
 
     const row = e.target.closest('tr');
     const id = row.cells[0].textContent.trim();
-    
-    // Determine resource type from closest tab or table
     const tabPane = e.target.closest('.tab-pane');
-    const resource = tabPane.id; // 'movies', 'games', 'shows'
+    const resource = tabPane.id;
 
     try {
-      const response = await fetch(`${API_BASE}/${resource}/${id}`, {
+      const response = await apiFetch(`/${resource}/${id}`, {
         method: 'DELETE'
       });
 
       if (response.ok) {
-        // Refresh the correct table
         if (resource === 'movies') loadMovies();
         else if (resource === 'games') loadGames();
         else if (resource === 'shows') loadShows();
-        
         alert('Item deleted successfully!');
+      } else {
+        const data = await response.json().catch(() => ({}));
+        alert(data.error || 'Error deleting item');
       }
     } catch (error) {
       console.error('Error deleting:', error);
@@ -260,51 +365,37 @@ document.addEventListener('click', async (e) => {
     }
   }
 });
-// LEARNED: Closest refers to the closest defined element to the button. <tr> in this case.
-// REMEMBER: I need to remember that we are removing data from a JSON file, not deleting a row.
 
-// Edit Movie
+// Edit handlers
 document.addEventListener('click', (e) => {
   if (e.target.textContent === 'Edit' && e.target.closest('#movies')) {
     const row = e.target.closest('tr');
-    const id = row.cells[0].textContent.trim();
-    
-    // Populate modal
-    document.getElementById('edit-movie-id').value = id;
+    document.getElementById('edit-movie-id').value = row.cells[0].textContent.trim();
     document.getElementById('edit-movie-title').value = row.cells[1].textContent;
     document.getElementById('edit-movie-genre').value = row.cells[2].textContent;
     document.getElementById('edit-movie-year').value = row.cells[3].textContent;
-    
     new bootstrap.Modal(document.getElementById('editMovieModal')).show();
   }
 
-// Edit Game
-if (e.target.textContent === 'Edit' && e.target.closest('#games')) {
-  const row = e.target.closest('tr');
-  const id = row.cells[0].textContent.trim();
-  
-  document.getElementById('edit-game-id').value = id;
-  document.getElementById('edit-game-title').value = row.cells[1].textContent;
-  document.getElementById('edit-game-genre').value = row.cells[2].textContent;
-  document.getElementById('edit-game-year').value = row.cells[3].textContent;
-  
-  new bootstrap.Modal(document.getElementById('editGameModal')).show();
-}
+  if (e.target.textContent === 'Edit' && e.target.closest('#games')) {
+    const row = e.target.closest('tr');
+    document.getElementById('edit-game-id').value = row.cells[0].textContent.trim();
+    document.getElementById('edit-game-title').value = row.cells[1].textContent;
+    document.getElementById('edit-game-genre').value = row.cells[2].textContent;
+    document.getElementById('edit-game-year').value = row.cells[3].textContent;
+    new bootstrap.Modal(document.getElementById('editGameModal')).show();
+  }
 
-if (e.target.textContent === 'Edit' && e.target.closest('#shows')) {
-  const row = e.target.closest('tr');
-  const id = row.cells[0].textContent.trim();
-  
-  document.getElementById('edit-show-id').value = id;
-  document.getElementById('edit-show-title').value = row.cells[1].textContent;
-  document.getElementById('edit-show-genre').value = row.cells[2].textContent;
-  document.getElementById('edit-show-year').value = row.cells[3].textContent;
-  
-  new bootstrap.Modal(document.getElementById('editShowModal')).show();
-}
+  if (e.target.textContent === 'Edit' && e.target.closest('#shows')) {
+    const row = e.target.closest('tr');
+    document.getElementById('edit-show-id').value = row.cells[0].textContent.trim();
+    document.getElementById('edit-show-title').value = row.cells[1].textContent;
+    document.getElementById('edit-show-genre').value = row.cells[2].textContent;
+    document.getElementById('edit-show-year').value = row.cells[3].textContent;
+    new bootstrap.Modal(document.getElementById('editShowModal')).show();
+  }
 });
 
-// Save Movie Edit
 document.getElementById('save-movie-edit').addEventListener('click', async () => {
   const id = document.getElementById('edit-movie-id').value;
   const updatedMovie = {
@@ -314,12 +405,10 @@ document.getElementById('save-movie-edit').addEventListener('click', async () =>
   };
 
   try {
-    const response = await fetch(`${API_BASE}/movies/${id}`, {
+    const response = await apiFetch(`/movies/${id}`, {
       method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updatedMovie)
     });
-
     if (response.ok) {
       bootstrap.Modal.getInstance(document.getElementById('editMovieModal')).hide();
       loadMovies();
@@ -330,7 +419,6 @@ document.getElementById('save-movie-edit').addEventListener('click', async () =>
   }
 });
 
-// Save Game Edit
 document.getElementById('save-game-edit').addEventListener('click', async () => {
   const id = document.getElementById('edit-game-id').value;
   const updatedGame = {
@@ -340,12 +428,10 @@ document.getElementById('save-game-edit').addEventListener('click', async () => 
   };
 
   try {
-    const response = await fetch(`${API_BASE}/games/${id}`, {
+    const response = await apiFetch(`/games/${id}`, {
       method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updatedGame)
     });
-
     if (response.ok) {
       bootstrap.Modal.getInstance(document.getElementById('editGameModal')).hide();
       loadGames();
@@ -356,7 +442,6 @@ document.getElementById('save-game-edit').addEventListener('click', async () => 
   }
 });
 
-// Save Show Edit
 document.getElementById('save-show-edit').addEventListener('click', async () => {
   const id = document.getElementById('edit-show-id').value;
   const updatedShow = {
@@ -366,12 +451,10 @@ document.getElementById('save-show-edit').addEventListener('click', async () => 
   };
 
   try {
-    const response = await fetch(`${API_BASE}/shows/${id}`, {
+    const response = await apiFetch(`/shows/${id}`, {
       method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updatedShow)
     });
-
     if (response.ok) {
       bootstrap.Modal.getInstance(document.getElementById('editShowModal')).hide();
       loadShows();
