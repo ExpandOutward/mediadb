@@ -11,9 +11,19 @@ function requireAuth(req, res, next) {
 }
 
 function registerAuthRoutes(app) {
-  // Create account
+  // Create account (invite-only: requires ADMIN_SECRET header)
+  // Public self-signup is disabled. You create users via Postman with the secret.
   app.post('/auth/register', async (req, res) => {
     try {
+      const adminSecret = process.env.ADMIN_SECRET;
+      const provided = req.get('X-Admin-Secret') || '';
+
+      if (!adminSecret || provided !== adminSecret) {
+        return res.status(403).json({
+          error: 'Public registration is closed. Contact the site owner for an account.'
+        });
+      }
+
       const email = (req.body.email || '').trim().toLowerCase();
       const password = req.body.password || '';
 
@@ -34,12 +44,12 @@ function registerAuthRoutes(app) {
       );
 
       const user = result.rows[0];
-      req.session.userId = user.id;
-      req.session.email = user.email;
 
+      // Do not auto-login as the new user when an admin creates the account
       res.status(201).json({
         id: user.id,
-        email: user.email
+        email: user.email,
+        message: 'User created. They can log in with this email and password.'
       });
     } catch (err) {
       if (err.code === '23505') {

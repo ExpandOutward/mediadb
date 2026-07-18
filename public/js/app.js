@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('edit-show-year').min = 1500;
 
   document.getElementById('login-btn').addEventListener('click', () => handleAuth('login'));
-  document.getElementById('register-btn').addEventListener('click', () => handleAuth('register'));
   document.getElementById('logout-btn').addEventListener('click', handleLogout);
 
   await checkSession();
@@ -83,7 +82,7 @@ function setAuthError(message) {
   el.textContent = message;
 }
 
-async function handleAuth(mode) {
+async function handleAuth() {
   setAuthError('');
   const email = document.getElementById('auth-email').value.trim();
   const password = document.getElementById('auth-password').value;
@@ -93,9 +92,8 @@ async function handleAuth(mode) {
     return;
   }
 
-  const path = mode === 'register' ? '/auth/register' : '/auth/login';
   try {
-    const response = await apiFetch(path, {
+    const response = await apiFetch('/auth/login', {
       method: 'POST',
       body: JSON.stringify({ email, password })
     });
