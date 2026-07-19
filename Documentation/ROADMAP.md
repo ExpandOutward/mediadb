@@ -1,19 +1,39 @@
 # My Top 10 - Release Roadmap
-The Release Roadmap contains information on future releases, including features, enhancements, major fixes, and major deployments. Only the 10 most recent deployments will be maintained in the roadmap. 
+The Release Roadmap contains information on future releases, including features, enhancements, major fixes, and major deployments. Only the 10 most recent deployments will be maintained in the roadmap.
 
-# Index
-- [Version 3](#version-3)
-- [Version 2](#version-2)
-- [Version 1](#version-1)
+## Application
 
-## Version 3
-- **18**: Added Postgres for login functionality | Users must request access, then can log in to their own individual lists
-- **18**: Resolved [Issue #1](https://github.com/ExpandOutward/My-Top-10/issues/1) | Prevent API from creating more than 10 rows
+### Upcoming Releases
+#### Version 4 (TBD)
+- **Import/Export Functionality**: Easily backup, restore, or create lists.
+- **Improved Error Messages & Help Tips** for better user support.
 
-## Version 2
-### July 2026
-- **17**: Migrated backend from JSON Server to Express JS.
+### Release History
 
-## Version 1
-### July 2026
-- **16**: Initial deployment
+| Version | Release Date | Highlights |
+|---------|--------------|----------|
+| 3 | July 2026 | Added Postgres for user-specific lists + login (invite-only). Fixed Issue #1 (max 10 items). |
+| 2 | July 2026 | Migrated backend from JSON Server to Express.js for better scalability. |
+| 1 | July 2026 | Initial deployment with HTML/CSS/JS + Bootstrap frontend. |
+
+## Documentation
+
+### User Guide
+
+#### Version 3 (TBD)
+- **Screenshots**: Version 2 will be updated to include screenshots to offer more tangible product guidance.
+
+| Version | Release Date | Highlights |
+|---------|--------------|----------|
+| 2 | July 2026 | Updated to reflect changes made in application versions 2 & 3 |
+| 1 | July 2026 | Initial publish |
+
+### API Guide 
+
+#### Version 3 (TBD)
+- **Screenshots**: Version 2 will be updated to include screenshots to offer more tangible product guidance.
+
+| Version | Release Date | Highlights |
+|---------|--------------|----------|
+| 2 | July 2026 | Updated to reflect changes made in application versions 2 & 3 |
+| 1 | July 2026 | Initial publish |
