@@ -5,7 +5,7 @@ The Release Roadmap contains information on future releases, including features,
 
 ### Upcoming Releases
 #### Version 4 (TBD)
-- **Import/Export Functionality**: Easily backup, restore, or create lists.
+- **Import/Export Functionality** to easily backup, restore, or create lists.
 - **Improved Error Messages & Help Tips** for better user support.
 
 ### Release History
@@ -21,7 +21,7 @@ The Release Roadmap contains information on future releases, including features,
 ### User Guide
 
 #### Version 3 (TBD)
-- **Screenshots**: Version 2 will be updated to include screenshots to offer more tangible product guidance.
+- **Screenshots** to supplement text-based instructions.
 
 | Version | Release Date | Highlights |
 |---------|--------------|----------|
@@ -31,7 +31,7 @@ The Release Roadmap contains information on future releases, including features,
 ### API Guide 
 
 #### Version 3 (TBD)
-- **Screenshots**: Version 2 will be updated to include screenshots to offer more tangible product guidance.
+- Details TBD
 
 | Version | Release Date | Highlights |
 |---------|--------------|----------|
