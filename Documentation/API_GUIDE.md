@@ -13,7 +13,6 @@
     - [Log Out](#log-out) <!-- D2/P3 -->
 - [GET End Points](#get-end-points) <!-- D2/P3 -->
     - [GET List Content](#get-list-content) <!-- D2/P3 -->
-    - [GET A List Object](#get-a-list-object) <!-- D2/P3 -->
 - [POST End Points](#post-end-points) <!-- D2/P3 -->
     - [POST Content To List](#post-content-to-list) <!-- D2/P3 -->
 - [PUT End Points](#put-end-points) <!-- D2/P3 -->
@@ -137,28 +136,6 @@ The GET End Points display all of the list details respective of the chosen end 
         "title": "Never Hike In The Snow",
         "genre": "Horror",
         "year": "2021"
-    }
-]
-```
-
-### GET A List Object  <!-- D2/P3 -->
-Replace the `#` with the `id` of the object that you would like to view.
-
-| Element | Value |
-|----------|-------------|
-|     Method     |      GET       |
-|     Movies URL     |      https://my-top-10.onrender.com/movies/#       |
-|     Games URL     |      https://my-top-10.onrender.com/games/#       |
-|     Shows URL     |      https://my-top-10.onrender.com/shows/#       |
-
-#### Response Body (Games)
-```json
-[
-    {
-        "id": 2,
-        "title": "Donkey Kong Country",
-        "genre": "Action",
-        "year": "1994"
     }
 ]
 ```
