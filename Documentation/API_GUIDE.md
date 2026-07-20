@@ -254,7 +254,7 @@ Replace the `#` with the `id` of the object that you would like to delete.
 ## Version History
 
 ### Version 2
-- **17 - 20**: Updated documentation to reflect changes made after moving from JSON Server to Express JS.
+- **17 - 20**: Updated documentation to reflect changes made after moving from JSON Server to Express.js.
   - Most significant change in regard to API enables users to use a public URL.
   - Previously, users had to download the application and run npm. This is no longer required. 
 

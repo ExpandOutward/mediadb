@@ -1,5 +1,5 @@
 # My Top 10 - A Customer Support Simulation
-"My Top 10" is a simple application that acts as a focal point in a simulated support enviornment that I built out to showcase my knowledge, skills, and approach to application support. The end-to-end effort allows me to demonstrate a wide range of skills in real-time. This `README` acts as a guide for recruiters, hiring managers, and/or anyone who would like to use this project for learning or inspiration. 
+"My Top 10" is a simple application that acts as a focal point in a simulated support environment that I built out to showcase my knowledge, skills, and approach to application support. The end-to-end effort allows me to demonstrate a wide range of skills in real-time. This `README` acts as a guide for recruiters, hiring managers, and/or anyone who would like to use this project for learning or inspiration. 
 
 - [Customer Support](#customer-support)
     - **Skills**: Active Listening, Chat Support, Email Support, Phone Support
@@ -11,6 +11,17 @@
     - **Skills**: APIs, Postman
 - [Development](#development)
     - **Skills**: HTML5, CSS3, JavaScript, Bootstrap5, APIs, Node.js, Express.js, Git, GitHub, npm
+
+**Generative AI**: I use generative AI as a tool to supplement my learning, catch mistakes, and guide me through difficult processes. The content below clearly defines what actions were peformed by me versus Grok AI and provides detailed descriptions on how I use AI in each role.
+
+### Links
+
+**Application URL:** https://my-top-10.onrender.com/  
+**Request Access:** [Email](mailto:kenjsdev@pm.me) | [LinkedIn DM](https://www.linkedin.com/in/expandoutward/) | [X DM](https://x.com/ExpandOutward)  
+**Code Repository:** [GitHub](https://github.com/ExpandOutward/My-Top-10)  
+**Support Simulation:** [Open](https://github.com/ExpandOutward/My-Top-10/issues) | [Closed](https://github.com/ExpandOutward/My-Top-10/issues?q=is%3Aissue%20state%3Aclosed)  
+**Project Documentation**:
+[User Guide](https://github.com/ExpandOutward/My-Top-10/blob/main/Documentation/USER_GUIDE.md) | [API Guide](https://github.com/ExpandOutward/My-Top-10/blob/main/Documentation/API_GUIDE.md) | [Release Roadmap](https://github.com/ExpandOutward/My-Top-10/blob/main/Documentation/ROADMAP.md) | 
 
 ## Customer Support
 
@@ -55,9 +66,6 @@ _"Your name is Abby. You are a casual business user who isn't very technical but
 **Grok AI Role**: Proofreader   
 **Goal**: Demonstrate and improve my Documentation skills
 
-**Project Documentation**   
-[User Guide]() | [API Guide]() | [Testing Checklist]() | [Release Roadmap]()
-
 **Focus**
 - Gain a better understanding of Knowledge Centered Services (KCS) and implement KCS principles into each document.
 - Detect and correct any habits that I need to correct when initially writing documentation.
@@ -88,7 +96,7 @@ _"Your name is Abby. You are a casual business user who isn't very technical but
 - **Phase 3**: Implemented Individual Login
     - My overall vision was to be able to create user accounts for recruiters who could test the application. This was not possible in Phase 2.
     - After asking Grok AI for advice, I determined that learning all of the necessary steps to accomplish a fully functional login would delay the project beyond reasonable expectations.
-    - Insalled Grok Build and had Grok implement the Login features. 
+    - Installed Grok Build and had Grok implement the Login features. 
 
 **Current Focus**  
 Phases 2 and 3 left a lot to be learned. I have had to remind myself that I am applying for Support Engineer positions, not developer positions. Scenarios that are implemented and not fully understood by me maximize my learning opportunities. Grok will patch many of these knowledge holes as I work with it in the simulated "Senior Developer" role. 

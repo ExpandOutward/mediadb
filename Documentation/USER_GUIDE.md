@@ -56,7 +56,7 @@ Each content type has the same 3 fields. Title, Genre, and Year.
 ### Version 2
 ### July 2026
 - **17-20**: Updated to reflect changes made in application versions 2 & 3
-    - Moved from JSON Server to Express JS
+    - Moved from JSON Server to Express.js
     - Users no longer need to download files or run JSON Server
     - Guide significanly simplified due to reduced steps for usage
 

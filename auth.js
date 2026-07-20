@@ -103,11 +103,19 @@ function registerAuthRoutes(app) {
 
   // Log out
   app.post('/auth/logout', (req, res) => {
+    // Must match cookie options used in express-session (see server.js)
+    const cookieOptions = {
+      path: '/',
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production' || Boolean(process.env.RENDER),
+      sameSite: 'lax'
+    };
+
     req.session.destroy((err) => {
       if (err) {
         return res.status(500).json({ error: 'Could not log out' });
       }
-      res.clearCookie('connect.sid');
+      res.clearCookie('connect.sid', cookieOptions);
       res.json({ message: 'Logged out' });
     });
   });
