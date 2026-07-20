@@ -111,23 +111,54 @@ All performance testing passed
 
 | API Request    | Result           |
 |--------------|-------------------|
-| Create User |    |
-| Log In   |     |
+| Create User |  Pass  |
+| Log In   |   Pass  |
 |  Get Current Login  |  Pass   |
 |  Change Password  |  Pass   |
-|  Get Movies  |     |
-|  Get Movie  |     |
-|  Create Movie  |     |
-|  Update Movie  |     |
-|  Delete Movie  |     |
-|  Get Games  |     |
-|  Get Game  |     |
-|  Create Games  |     |
-|  Update Games  |     |
-|  Delete Games  |     |
-|  Get Shows  |     |
-|  Get Show  |     |
-|  Create Show  |     |
-|  Update Show  |     |
-|  Delete Show  |     |
-|  Log Out  |     |
+|  Get Movies  |  Pass   |
+|  Create Movie  |  Fail   |
+|  Update Movie  |  Pass  |
+|  Delete Movie  |  Pass   |
+|  Get Games  |  Pass   |
+|  Create Games  | Pass    |
+|  Update Games  |  Pass    |
+|  Delete Games  |  Pass   |
+|  Get Shows  |  Pass   |
+|  Create Show  |  Pass   |
+|  Update Show  |  Pass   |
+|  Delete Show  |  Pass   |
+|  Log Out  |  Pass   |
+
+#### Additional Details
+All pass except the Create reqeusts. This issue has already been called out during manual testing. Add that the ID counts up regardless of the user.
+- Create Games passed because it is the first game to be created. Will dive into this further during customer support simulation.
+
+---
+
+### Functional Testing (Pass 2)
+
+| API Request    | Result           |
+|--------------|-------------------|
+| Create User |  N/A  |
+| Log In   |   N/A  |
+|  Get Current Login  |  N/A   |
+|  Change Password  |  N/A   |
+|  Get Movies  |  N/A   |
+|  Get Movie  |  N/A   |
+|  Create Movie  |  N/A   |
+|  Update Movie  |  N/A  |
+|  Delete Movie  |  N/A   |
+|  Get Games  |  N/A   |
+|  Get Game  |   N/A  |
+|  Create Games  | N/A    |
+|  Update Games  |   N/A  |
+|  Delete Games  |  N/A   |
+|  Get Shows  |  N/A   |
+|  Get Show  |  N/A   |
+|  Create Show  |  N/A   |
+|  Update Show  |  N/A   |
+|  Delete Show  |   N/A  |
+|  Log Out  |  N/A   |
+
+#### Additional Details
+Second test will return same results. I should address the ID issue and rerun tests after the fix. 
