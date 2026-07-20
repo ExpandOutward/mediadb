@@ -21,7 +21,7 @@
 **Code Repository:** [GitHub](https://github.com/ExpandOutward/My-Top-10)  
 **Support Simulation:** [Open](https://github.com/ExpandOutward/My-Top-10/issues) | [Closed](https://github.com/ExpandOutward/My-Top-10/issues?q=is%3Aissue%20state%3Aclosed)  
 **Project Documentation**:
-[User Guide](https://github.com/ExpandOutward/My-Top-10/blob/main/Documentation/USER_GUIDE.md) | [API Guide](https://github.com/ExpandOutward/My-Top-10/blob/main/Documentation/API_GUIDE.md) | [Release Roadmap](https://github.com/ExpandOutward/My-Top-10/blob/main/Documentation/ROADMAP.md) | 
+[User Guide](https://github.com/ExpandOutward/My-Top-10/blob/main/Documentation/USER_GUIDE.md) | [API Guide](https://github.com/ExpandOutward/My-Top-10/blob/main/Documentation/API_GUIDE.md) | [Release Roadmap](https://github.com/ExpandOutward/My-Top-10/blob/main/Documentation/ROADMAP.md) | [Testing Guide](https://github.com/ExpandOutward/My-Top-10/blob/main/Documentation/TESTING_GUIDE.md)
 
 ## Customer Support
 
