@@ -1,436 +1,262 @@
 # My Top 10 - API Guide
 
-**Version**: 1  
+**Document Version**: 2  
+**Product Version**: 3   
 **Date**: July 2026  
 [Version History](#version-history)
 
 ## Index
-- [Postman Instructions](#postman-instructions)
-- [Movie APIs](#movie-apis)
-- [Game APIs](#game-apis)
-- [Show APIs](#show-apis)
-- [Environment Variables](#environment-variables)
-- [Testing](#testing)
-- [Version History](#version-history)
+- [Authorization](#authorization) <!-- D2/P3 -->
+    - [Log In](#log-in) <!-- D2/P3 -->
+    - [Get Current Login Details](#get-current-login-details) <!-- D2/P3 -->
+    - [Change Password](#change-password) <!-- V2 -->
+    - [Log Out](#log-out) <!-- D2/P3 -->
+- [GET End Points](#get-end-points) <!-- D2/P3 -->
+    - [GET List Content](#get-list-content) <!-- D2/P3 -->
+    - [GET A List Object](#get-a-list-object) <!-- D2/P3 -->
+- [POST End Points](#post-end-points) <!-- D2/P3 -->
+    - [POST Content To List](#post-content-to-list) <!-- D2/P3 -->
+- [PUT End Points](#put-end-points) <!-- D2/P3 -->
+    - [Update Existing Content](#update-existing-concent) <!-- D2/P3 -->
 
-## Postman Instructions
-Postman can be used to pull, create, edit, and delete data contained within the Media Database application. Postman can also be used to run various tests. 
+## Authorization  <!-- D2/P3 -->
 
-### Prerequisites
-- General postman knowledge
-- General API knowledge 
-- Postman files from the Media Database GitHub repository
+### Log In  <!-- D2/P3 -->
 
-### Steps to Install and Use Postman
-- Download Postman [here](https://www.postman.com/downloads/)
-- Install Postman
-- Download the Media Database ZIP file from GitHub [here](https://github.com/ExpandOutward/mediadb/tree/main)
-- Unzip the file
-- In Postman, click the **Import** button at the top right of the screen
-- Navigate to the unzipped file > Postman
-- Select both of the files listed below
-    - `My Top 10 API.postman_collection.json`
-    - `My Top 10.postman_environment.json`
-- In Postman, click into the Collections tab to ensure that the collection has been successfully imported
-    - MediaDB API as the Parent folder
-    - movies, games, shows as Child folders
-    - Each Child folder should have two GET requests along with ADD, UPDATE, and DELETE requests
-- In Postman, click into the Environments tab to ensure that the Environment Variables are present
-    - base_url : http://localhost:3000
-    - movie_id : 999
-    - game_id : 999
-    - show_id : 999
+| Element | Value |
+|----------|-------------|
+|     Method     |      POST       |
+|     URL     |      https://my-top-10.onrender.com/auth/login       |
+| Content-Type | application/json |
+| Body | raw / JSON |
 
-## Movie APIs
+#### Body Text
+```json
+{
+  "username": "username",
+  "password": "password"
+}
 
-**IMPORTANT**: The URLs shared below will only work if JSON Server is running. Please see `USER_GUIDE.md` in the Documents folder for information on installing and running JSON Server.
+```
 
-### GET Movies
+#### Response Body
+```json
+{
+    "id": 1,
+    "username": "user"
+}
 
-The GET Movies API pulls all movies from the `mediadb.json` file and displays them in the Postman response body.
+```
 
-**Method**: GET  
-**URL**: http://localhost:3000/movies  
-**Example Response**:
-```JSON
+### Get Current Login Details  <!-- D2/P3 -->
+
+| Element | Value |
+|----------|-------------|
+|     Method     |      GET       |
+|     URL     |      https://my-top-10.onrender.com/auth/me       |
+| Content-Type | application/json |
+
+#### Response Body
+```json
+{
+    "id": 1,
+    "username": "username",
+    "created_at": "2026-07-18T21:42:51.950Z"
+}
+
+```
+
+### Change Password  <!-- D2/P3 -->
+
+| Element | Value |
+|----------|-------------|
+|     Method     |      POST       |
+|     URL     |      https://my-top-10.onrender.com/auth/change-password       |
+| Content-Type | application/json |
+| Body | raw / JSON |
+
+#### Body Text
+```json
+{
+  "currentPassword": "currentpassword",
+  "newPassword": "newpassword"
+}
+
+```
+
+#### Response Body
+```json
+{
+    "message": "Password updated"
+}
+
+```
+
+### Log Out <!-- D2/P3 -->
+
+| Element | Value |
+|----------|-------------|
+|     Method     |      POST       |
+|     URL     |      https://my-top-10.onrender.com/auth/logout       |
+
+
+#### Response Body
+```json
+{
+    "message": "Logged out"
+}
+
+```
+
+##  GET End points  <!-- D2/P3 -->
+The GET End Points display all of the list details respective of the chosen end point.
+
+**Important**: These API calls require authentication. Log in to the API server first (via Postman or your preferred client).
+
+### GET List Content  <!-- D2/P3 -->
+
+
+| Element | Value |
+|----------|-------------|
+|     Method     |      GET       |
+|     Movies URL     |      https://my-top-10.onrender.com/movies       |
+|     Games URL     |      https://my-top-10.onrender.com/games       |
+|     Shows URL     |      https://my-top-10.onrender.com/shows       |
+
+#### Response Body (Movies)
+```json
 [
     {
-        "title": "The Matrix",
-        "genre": "Action",
-        "year": "1999",
-        "id": 1
-    },
-    {
+        "id": 1,
         "title": "Halloween",
         "genre": "Horror",
-        "year": "1978",
-        "id": 2
+        "year": "1978"
+    },
+    {
+        "id": 2,
+        "title": "Never Hike In The Snow",
+        "genre": "Horror",
+        "year": "2021"
     }
 ]
 ```
 
-### GET A Movie
+### GET A List Object  <!-- D2/P3 -->
+Replace the `#` with the `id` of the object that you would like to view.
 
-The GET A Movie API pulls a single movie from the `mediadb.json` file respective to the id and displays it in the response body.
+| Element | Value |
+|----------|-------------|
+|     Method     |      GET       |
+|     Movies URL     |      https://my-top-10.onrender.com/movies/#       |
+|     Games URL     |      https://my-top-10.onrender.com/games/#       |
+|     Shows URL     |      https://my-top-10.onrender.com/shows/#       |
 
-**Method**: GET  
-**URL**: http://localhost:3000/movies/#
-- **Note**: Replace the `#` with the `id` of the movie.  
-
-**Example**: http://localhost:3000/movies/1    
-**Example Response**:
-```JSON
-{
-    "title": "The Matrix",
-    "genre": "Action",
-    "year": "1999",
-    "id": 1
-}
-```
-
-### POST A Movie
-The POST A Movie API sends an object to the `mediadb.json`, adding it to the movies object.
-
-**Method**: POST  
-**URL**: http://localhost:3000/movies  
-**Body**:
-
-```JSON
-{
-    "title": "Text String Here",
-    "genre": "Text String Here",
-    "year": 1500 - Current Year
-}
-```
-
-**Example Response**:
-```JSON 
-{
-    "id": 3,
-    "title": "Obsession",
-    "genre": "Horror",
-    "year": 2026
-}
-```
-
-### Update A Movie
-The Update A Movie API sends a PUT request the `mediadb.json`, updating the movie object respective to the id included in the URL.
-
-**Method**: PUT  
-**URL**: http://localhost:3000/movies/#  
-- **Note**: Replace the `#` with the `id` of the movie.  
-
-**Example**: http://localhost:3000/movies/1    
-**Example Response**:
-**Body:**
-```JSON
-{
-    "id": 1-10,
-    "title": "Text String Here",
-    "genre": "Text String Here",
-    "year": 1500 - Current Year
-}
-```
-**Example Response**:
-
-```JSON 
-{
-    "id": 5,
-    "title": "Bloodsport",
-    "genre": "Action",
-    "year": 1988
-}
-```
-
-### Delete A Movie
-The Delete A Movie API sends a DELETE request the `mediadb.json`, deleting the movie object respective to the id included in the URL.
-
-
-**Method**: DELETE  
-**URL**: http://localhost:3000/movies/#
-- **Note**: Replace the `#` with the `id` of the movie.  
-
-**Example**: http://localhost:3000/movies/1    
-**Example Response**:
-
-```JSON 
-{}
-```
-
-## Game APIs
-
-### GET Games
-The GET Games API pulls all games from the `mediadb.json` file and displays them in the Postman response body.
-
-**Method**: GET  
-**URL**: http://localhost:3000/games  
-**Example Response**:
-```JSON
+#### Response Body (Games)
+```json
 [
     {
+        "id": 2,
         "title": "Donkey Kong Country",
         "genre": "Action",
-        "year": "1994",
-        "id": 1
-    },
-    {
-        "title": "Mortal Kombat",
-        "genre": "Fighting",
-        "year": "1992",
-        "id": 2
+        "year": "1994"
     }
 ]
 ```
 
-### GET A Game
+## POST End Points  <!-- D2/P3 -->
 
-The GET A Game API pulls a single game from the `mediadb.json` file respective to the id and displays it in the response body.
+The POST End Points allow users to add content to lists through API calls.
 
+**Important**: These API calls require authentication. Log in to the API server first (via Postman or your preferred client).
 
-**Method**: GET  
-**URL**: http://localhost:3000/games/#
-- **Note**: Replace the `#` with the `id` of the movie.  
+### POST Content To List  <!-- D2/P3 -->
 
-**Example**: http://localhost:3000/games/1    
-**Example Response**:
+| Element | Value |
+|----------|-------------|
+|     Method     |      POST       |
+|     Movies URL     |      https://my-top-10.onrender.com/movies       |
+|     Games URL     |      https://my-top-10.onrender.com/games       |
+|     Shows URL     |      https://my-top-10.onrender.com/shows       |
+| Content-Type | application/json |
+| Body | raw / JSON |
+
+#### Request Body
 ```JSON
 {
-    "title": "Donkey Kong Country",
-    "genre": "Action",
-    "year": "1994",
-    "id": 1
+    "title": "Title",
+    "genre": "Genre",
+    "year": Year
 }
 ```
 
-### POST A Game
-
-The POST A Game API sends an object to the `mediadb.json`, adding it to the games object.
-
-**Method**: POST  
-**URL**: http://localhost:3000/games  
-**Body**:
+#### Response Body
 ```JSON
 {
-    "title": "Text String Here",
-    "genre": "Text String Here",
-    "year": 1500 - Current Year
-}
-```
-**Example Response**:
-```JSON
-{
-    "title": "Resident Evil",
-    "genre": "Survival Horror",
-    "year": "1996",
-    "id": 3
-}
-
-```
-
-### Update A Game
-
-The Update A Game API sends a PUT request the `mediadb.json`, updating the game object respective to the id included in the URL.
-
-**Method**: PUT  
-**URL**: http://localhost:3000/games/#  
-- **Note**: Replace the `#` with the `id` of the movie.  
-
-**Example**: http://localhost:3000/games/1    
-**Example Response**:
-**Body:**
-```JSON
-{
-    "id": 1-10,
-    "title": "Text String Here",
-    "genre": "Text String Here",
-    "year": 1500 - Current Year
-}
-```
-**Example Response**:
-
-```JSON 
-{
-    "id": 5,
-    "title": "Mortal Kombat",
-    "genre": "Fighting",
-    "year": 1992
+    "id": 1,
+    "title": "LOST",
+    "genre": "Mystery",
+    "year": "2002"
 }
 ```
 
-### Delete A Game
-The Delete A Game API sends a DELETE request the `mediadb.json`, deleting the game object respective to the id included in the URL.
+## PUT End Points <!-- D2/P3 -->
 
-**Method**: DELETE  
-**URL**: http://localhost:3000/games/#
-- **Note**: Replace the `#` with the `id` of the movie.  
+### Update Existing Content <!-- D2/P3 -->
+Replace the `#` with the `id` of the object that you would like to update.
 
-**Example**: http://localhost:3000/games/1    
-**Example Response**:
+| Element | Value |
+|----------|-------------|
+|     Method     |      POST       |
+|     Movies URL     |      https://my-top-10.onrender.com/movies/#       |
+|     Games URL     |      https://my-top-10.onrender.com/games/#       |
+|     Shows URL     |      https://my-top-10.onrender.com/shows/#       |
+| Content-Type | application/json |
+| Body | raw / JSON |
 
-```JSON 
-{}
-```
-
-## Show APIs
-
-### GET Shows
-The GET Shows API pulls all shows from the `mediadb.json` file and displays them in the Postman response body.
-
-**Method**: GET  
-**URL**: http://localhost:3000/shows  
-**Example Response**:
-```JSON
-[
-    {
-        "title": "Tales From The Crypt",
-        "genre": "Horror",
-        "year": "1988",
-        "id": 1
-    },
-    {
-        "title": "LOST",
-        "genre": "Mystery",
-        "year": "2002",
-        "id": 2
-    }
-]
-```
-
-### GET A Show
-
-The GET A Movie API pulls a single movie from the `mediadb.json` file respective to the id and displays it in the response body.
-
-**Method**: GET  
-**URL**: http://localhost:3000/games/#
-- **Note**: Replace the `#` with the `id` of the movie.  
-
-**Example**: http://localhost:3000/games/1    
-**Example Response**:
-```JSON
-    {
-        "title": "Tales From The Crypt",
-        "genre": "Horror",
-        "year": "1988",
-        "id": 1
-    }
-```
-
-### POST A Show
-
-The POST A Show API sends an object to the `mediadb.json`, adding it to the shows object.
-
-**Method**: POST  
-**URL**: http://localhost:3000/shows  
-**Body**:
+#### Request Body
 ```JSON
 {
-    "title": "Text String Here",
-    "genre": "Text String Here",
-    "year": 1500 - Current Year
+    "title": "Title",
+    "genre": "Genre",
+    "year": Year
 }
 ```
-**Example Response**:
+
+#### Response Body
 ```JSON
 {
-    "title": "Widow's Bay",
+    "id": 1,
+    "title": "Halloween",
     "genre": "Horror",
-    "year": "2026",
-    "id": 3
+    "year": "2018"
 }
 ```
-### Update A Show
 
-The Update A Show API sends a PUT request the `mediadb.json`, updating the show object respective to the id included in the URL.
+## DELETE End Points <!-- D2/P3 -->
 
-**Method**: PUT  
-**URL**: http://localhost:3000/games/#  
-- **Note**: Replace the `#` with the `id` of the movie.  
+### Delete Content <!-- D2/P3 -->
+Replace the `#` with the `id` of the object that you would like to delete.
 
-**Example**: http://localhost:3000/games/1    
-**Example Response**:
-**Body:**
+| Element | Value |
+|----------|-------------|
+|     Method     |      POST       |
+|     Movies URL     |      https://my-top-10.onrender.com/movies/#       |
+|     Games URL     |      https://my-top-10.onrender.com/games/#       |
+|     Shows URL     |      https://my-top-10.onrender.com/shows/#       |
+
+#### Response Body
 ```JSON
 {
-    "id": 1-10,
-    "title": "Text String Here",
-    "genre": "Text String Here",
-    "year": 1500 - Current Year
+    "message": "Deleted"
 }
 ```
-**Example Response**:
-
-```JSON 
-{
-    "id": 5,
-    "title": "Married With Children",
-    "genre": "Comedy",
-    "year": 1987
-}
-```
-
-### Delete A Show
-The Delete A Show API sends a DELETE request the `mediadb.json`, deleting the show object respective to the id included in the URL.
-
-**Method**: DELETE  
-**URL**: http://localhost:3000/shows/#
-- **Note**: Replace the `#` with the `id` of the movie.  
-
-**Example**: http://localhost:3000/shows/1    
-**Example Response**:
-
-```JSON 
-{}
-```
-
-## Environment Variables
-Environment variables can be accessed through the Environments tab in Postman. Environment variables are used to automatically insert values into API payloads for efficiency, testing, or security. In the context of My Top 10, environment variables are used primarily for testing.
-
-The following variables are set in the `My top 10.postman_environment.json` file.
-
-| Key | Value | Description |
-|----------|----------|----------|
-| base_url   | http://localhost:3000     | Allows us to use {{base_url}} in place of the logical URL     |
-| movie_id | 999     | Creates movie object with id 999 for testing     |
-| game_id   | 999     | Creates game object with id 999 for testing     |
-| show_id | 999     | Creates show objecct with id 999 for testing     |
-
-**Important**: Ensure that the My Top 10 environment is selected in Postman at the top right corner of the screen. This is a necessary step to use the variables in Postman collections.
-
-## Testing
-
-As of this writing, there are two tests configured at the parent level of the My Top 10 Postman collection.
-
-Access the tests by clicking the **My Top 10** parent folder inside of Postman and then the **Scripts** tab.
-
-### Test 1: Status code must be 200 or 201
-This test will pass if a status code of 200 or 201 is returned when running each API.
-```JavaScript
-pm.test("Status code is successful (200 or 201)", function () {
-    const status = pm.response.code;
-    pm.expect(status).to.be.oneOf([200, 201]);
-});
-```
-
-### Test 2: Response time is less than 3000ms (3 seconds)
-This test will pass if the response is returned within 3 seconds.
-```JavaScript
-pm.test("Response time is less than 3000ms", function () {
-    pm.expect(pm.response.responseTime).to.be.below(3000);
-});
-```
-**Note:** The tests configured at the parent level will run every time an API within it is run.
-
-### Variable Context
-We have set `movie_id`, `game_id`, and `show_id` to `999` so that the data on the top 10 list is not impacted during testing. We can run each API by running the entire collection. The APIs will run in order and perform the following actions:
-- GET object
-- GET the object with id = 1
-- POST a new object with id = 999
-- UPDATE object with id = 999
-- DELETE object with id = 999
-
-Each API will return test results.
 
 ## Version History
+
+### Version 2
+- **17 - 20**: Updated documentation to reflect changes made after moving from JSON Server to Express JS.
+  - Most significant change in regard to API enables users to use a public URL.
+  - Previously, users had to download the application and run npm. This is no longer required. 
 
 ### Version 1
 #### July 2026

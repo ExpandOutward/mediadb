@@ -1,29 +1,94 @@
 # My Top 10 - A Customer Support Simulation
-My Top 10 is a simple web application that acts as a focal point in a larger initiative. My goal with this project is to build out a simulated support environment as a portfolio piece to help me stand out to recruiters and hiring managers. I want to highlight that I use AI as a tutor, not a cheat sheet. If I have to ask "what" then I also ask "why." 
+"My Top 10" is a simple application that acts as a focal point in a simulated support enviornment that I built out to showcase my knowledge, skills, and approach to application support. The end-to-end effort allows me to demonstrate a wide range of skills in real-time. This `README` acts as a guide for recruiters, hiring managers, and/or anyone who would like to use this project for learning or inspiration. 
 
-## 1. Design, Build, and Learn
-I came up with the idea for My Top 10 after taking [Postman Essential Training](https://www.linkedin.com/learning/postman-essential-training-21969591/) on LinkedIn learning. I connected Grok AI to my GitHub and presented the idea, using Grok as an assistant as I built the application. I went back through each file and line of code to consult Grok AI on any misunderstandings or learning gaps.
+- [Customer Support](#customer-support)
+    - **Skills**: Active Listening, Chat Support, Email Support, Phone Support
+- [Technical Support](#application-support)
+    - **Skills**: General Troubleshooting / Problem Solving, Postman, APIs, SQL
+- [Documentation](#documentation)
+    - **Skills**: Knowledge Management (KM), Knowledge Centered Services (KCS), Markdown
+- [Software Testing](#software-testing)
+    - **Skills**: APIs, Postman
+- [Development](#development)
+    - **Skills**: HTML5, CSS3, JavaScript, Bootstrap5, APIs, Node.js, Express.js, Git, GitHub, npm
 
-### Skills
-HTML5, CSS3, JavaScript (ES6), Bootstrap 5, Git, GitHub, APIs, Postman, Visual Studio Code, Generative AI
+## Customer Support
 
-## 2. Document
+### Process
 
-In addition to the standard `README.md` file, I have created API and User guides which can be found in the [Documents](https://github.com/ExpandOutward/My-Top-10/tree/main/Documentation) folder of this repository. `USER_GUIDE.md` provides download, installation, and usage instructions for the front end. `API_GUIDE.md` provides instructions on setting up and using Postman. 
+**My Role**: Support Engineer, Learner  
+**Grok AI Role**: Customer, Senior Developer  
+**Goal**: Demonstrate how I work with both customers and developers.
 
-### Skills
-Documentation, Knowledge-Centered Service, Markdown, Generative AI
+**Process Flow**
 
-## 3. Support
-With the application fully deployed and initial documentation complete, I can request Grok AI to create issues in GitHub to simulate a customer support scenario. My goal is to place myself in unpredictable support scenarios with varying degrees of pressure and difficulty. Once each issue is resolved, my final step is to highlight areas of potential improvement. I ask Grok AI for 3 recommendations for each resolved issue on how I could have improved the experience.
+- Start a chat with Grok AI, assigning a name, personality, and communication method.
+- Either ask Grok AI to find an issue to report or present Grok with a known issue.
+- Communicate with Grok as I would a customer, providing frequent and significant updates through multiple communication channels.
+- If needed, work with Grok in a separate chat with Grok acting as a Senior Engineer. 
+- Continue working with the customer to resolution.
+- As a final step, I ask Grok AI for 3 tips on how I could have provided a better experience.
 
 ### Example Prompts
 
-*"Please check my code and find an enhancement. In this simulation your name is Fred. You will act as a casual business user who isn't very technical but does enjoy learning and appreciates in depth descriptions told to you in a way that you can understand. This will be a chat based conversation using the existing chat window."*
+**Example 1**  
+_"Your name is Beau. You are a tech savvy business user with a very direct personality. You appreciate honest feedback and will not respond well if I try to buy time or provide inaccurate or incomplete information. Please find an issue with the application and report it to me as a bug via chat. Please write your responses as if they are emails."_
 
-*"Please check my code and find something that needs to be optimized. Your name is Jason. You are highly technical and somewhat agitated. If I try to buy time or come across like I don't know what I'm doing, you will call me on it. My goal is to both complete the optimization and improve your perspective / mood. This will be an audio chat using the existing chat window. It is possible that more than one call will be needed."*
+**Example 2**  
+_"Your name is Abby. You are a casual business user who isn't very technical but does appreciate in-depth applications and learning how to use the product to its full potential. You are reporting a bug where list ID numbers persist when an object is deleted, throwing off the top 10 concept all together. We will begin by chatting via text and finish up on audio when I'm required to explain the issue and the fix."_
 
-*"Please make up an issue that could happen on the user end if the do not install the application properly. I have no way of reproducing the issue. Your name is Laurie. You're very casual and responsive. Please outline the issue in email format right here in this chat. I will also respond as if I am writing emails to simulate email support."*
+## Technical Support
 
-### Skills
-Customer Support, Application Support, Chat Support, Email Support, Phone Support, Generative AI
+**My Role**: Support Engineer, Learner  
+**Grok AI Role**: Senior Engineer, Tutor  
+**Goal**: Expand technical troubleshooting skills and know-how while in between jobs.
+
+**Focus**
+
+- **Browser Debugging**: Browser debugging is often required to diagnose issues with the front end application.
+- **SQL**: SQL is required for querying the backend database and pushing data fixes.
+- **APIs**: From a technical support perspective, APIs can be used only to create new users.
+- **Expand Outward**: All other efforts supplement technical support improvement. Everything below this point applies here as well.
+
+## Documentation
+**My Role**: Author  
+**Grok AI Role**: Proofreader   
+**Goal**: Demonstrate and improve my Documentation skills
+
+**Project Documentation**   
+[User Guide]() | [API Guide]() | [Testing Checklist]() | [Release Roadmap]()
+
+**Focus**
+- Gain a better understanding of Knowledge Centered Services (KCS) and implement KCS principles into each document.
+- Detect and correct any habits that I need to correct when initially writing documentation.
+
+## Software Testing
+**My Role**: Tester  
+**Grok AI Role:** Tutor / Coach  
+**Goal:** Develop a deeper understanding of software testing to help me understand the process and empathize with developers.
+
+**Focus**
+- **UI Testing**: After a significant upgrade, I use a dedicated test account to test all of the front-end work flows. 
+- **API Testing**: Automate testing using Postman.
+
+## Development
+**My Role**: Junior Developer, Designer  
+**Grok AI Role**: Senior Developer, Coach  
+**Goal**: Better understand the software development life cycle so that I can be a better resource when working with developers / engineering.
+
+**Development Process**
+- **Phase 1**: Built a fully functional front-end application with API capabilities. 
+    - Asked Grok AI how I should approach this project
+    - Used existing HTML / CSS knowledge to build a basic skeleton of what I was looking for, asking Grok AI for improvements
+    - Had Grok AI walk me through each step, asking for elaboration on any lines of code or directions I did not understand.
+- **Phase 2**: Moved from JSON Server to Express.js
+    - The initial build implemented JSON Server, requiring recruiters and hiring managers to download the application should they want to test it.
+    - Had Grok AI walk me through each step, asking for elaboration on any steps that I did not understand. 
+        - There were a lot of steps. I did not retain all of the information but did learn a lot about deploying web services.
+- **Phase 3**: Implemented Individual Login
+    - My overall vision was to be able to create user accounts for recruiters who could test the application. This was not possible in Phase 2.
+    - After asking Grok AI for advice, I determined that learning all of the necessary steps to accomplish a fully functional login would delay the project beyond reasonable expectations.
+    - Insalled Grok Build and had Grok implement the Login features. 
+
+**Current Focus**  
+Phases 2 and 3 left a lot to be learned. I have had to remind myself that I am applying for Support Engineer positions, not developer positions. Scenarios that are implemented and not fully understood by me maximize my learning opportunities. Grok will patch many of these knowledge holes as I work with it in the simulated "Senior Developer" role. 
