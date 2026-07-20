@@ -9,3 +9,46 @@ body {
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
+
+/* Golden recruiter CTA on login screen */
+.btn-recruiter-gold {
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #1a1200;
+  border: 1px solid #f0d78c;
+  background: linear-gradient(180deg, #ffe9a8 0%, #d4a017 45%, #b8860b 100%);
+  box-shadow:
+    0 0 0 1px rgba(255, 215, 0, 0.25),
+    0 4px 14px rgba(212, 160, 23, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  padding: 0.65rem 1.25rem;
+  border-radius: 0.5rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+.btn-recruiter-gold:hover,
+.btn-recruiter-gold:focus {
+  color: #120c00;
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 0 1px rgba(255, 215, 0, 0.4),
+    0 6px 18px rgba(212, 160, 23, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.btn-recruiter-gold:active {
+  transform: translateY(0);
+  filter: brightness(0.96);
+}
+
+.link-recruiter {
+  color: #f0d78c;
+  text-decoration: none;
+}
+
+.link-recruiter:hover {
+  color: #ffe9a8;
+  text-decoration: underline;
+}
