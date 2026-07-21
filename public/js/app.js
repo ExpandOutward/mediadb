@@ -192,10 +192,11 @@ async function loadMovies() {
     const tbody = document.getElementById('movies-table-body');
     tbody.innerHTML = '';
 
-    movies.forEach((movie) => {
+    movies.forEach((movie, index) => {
+      const rank = index + 1;
       tbody.innerHTML += `
-        <tr>
-          <td>${movie.id}</td>
+        <tr data-id="${movie.id}">
+          <td>${rank}</td>
           <td>${movie.title}</td>
           <td>${movie.genre}</td>
           <td>${movie.year}</td>
@@ -224,10 +225,11 @@ async function loadGames() {
     const tbody = document.getElementById('games-table-body');
     tbody.innerHTML = '';
 
-    games.forEach((game) => {
+    games.forEach((game, index) => {
+      const rank = index + 1;
       tbody.innerHTML += `
-        <tr>
-          <td>${game.id}</td>
+        <tr data-id="${game.id}">
+          <td>${rank}</td>
           <td>${game.title}</td>
           <td>${game.genre}</td>
           <td>${game.year}</td>
@@ -256,10 +258,11 @@ async function loadShows() {
     const tbody = document.getElementById('shows-table-body');
     tbody.innerHTML = '';
 
-    shows.forEach((show) => {
+    shows.forEach((show, index) => {
+      const rank = index + 1;
       tbody.innerHTML += `
-        <tr>
-          <td>${show.id}</td>
+        <tr data-id="${show.id}">
+          <td>${rank}</td>
           <td>${show.title}</td>
           <td>${show.genre}</td>
           <td>${show.year}</td>
@@ -394,7 +397,8 @@ document.addEventListener('click', async (e) => {
     if (!confirm('Are you sure you want to delete this item?')) return;
 
     const row = e.target.closest('tr');
-    const id = row.cells[0].textContent.trim();
+    // data-id is the database id; Rank column is display-only (1..n)
+    const id = row.dataset.id;
     const tabPane = e.target.closest('.tab-pane');
     const resource = tabPane.id;
 
@@ -423,7 +427,7 @@ document.addEventListener('click', async (e) => {
 document.addEventListener('click', (e) => {
   if (e.target.textContent === 'Edit' && e.target.closest('#movies')) {
     const row = e.target.closest('tr');
-    document.getElementById('edit-movie-id').value = row.cells[0].textContent.trim();
+    document.getElementById('edit-movie-id').value = row.dataset.id;
     document.getElementById('edit-movie-title').value = row.cells[1].textContent;
     document.getElementById('edit-movie-genre').value = row.cells[2].textContent;
     document.getElementById('edit-movie-year').value = row.cells[3].textContent;
@@ -432,7 +436,7 @@ document.addEventListener('click', (e) => {
 
   if (e.target.textContent === 'Edit' && e.target.closest('#games')) {
     const row = e.target.closest('tr');
-    document.getElementById('edit-game-id').value = row.cells[0].textContent.trim();
+    document.getElementById('edit-game-id').value = row.dataset.id;
     document.getElementById('edit-game-title').value = row.cells[1].textContent;
     document.getElementById('edit-game-genre').value = row.cells[2].textContent;
     document.getElementById('edit-game-year').value = row.cells[3].textContent;
@@ -441,7 +445,7 @@ document.addEventListener('click', (e) => {
 
   if (e.target.textContent === 'Edit' && e.target.closest('#shows')) {
     const row = e.target.closest('tr');
-    document.getElementById('edit-show-id').value = row.cells[0].textContent.trim();
+    document.getElementById('edit-show-id').value = row.dataset.id;
     document.getElementById('edit-show-title').value = row.cells[1].textContent;
     document.getElementById('edit-show-genre').value = row.cells[2].textContent;
     document.getElementById('edit-show-year').value = row.cells[3].textContent;
