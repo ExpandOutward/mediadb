@@ -290,33 +290,33 @@
   <!-- Show Section -->
   <div class="tab-pane fade" id="shows" role="tabpanel">
     <h3>Shows</h3>
-      <table class="table table-dark table-striped table-hover">
-        <div class="card bg-dark border-secondary mb-4">
-          <div class="card-header">
-            <h5 class="mb-0 text-light">Add New Show</h5>
+    <div class="card bg-dark border-secondary mb-4">
+      <div class="card-header">
+        <h5 class="mb-0 text-light">Add New Show</h5>
+      </div>
+      <div class="card-body">
+        <form id="add-show-form">
+          <div class="row g-3">
+            <div class="col-md-4">
+              <label class="form-label text-light">Title</label>
+              <input type="text" class="form-control bg-dark text-light border-secondary" id="show-title" required>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label text-light">Genre</label>
+              <input type="text" class="form-control bg-dark text-light border-secondary" id="show-genre" required>
+            </div>
+            <div class="col-md-2">
+              <label class="form-label text-light">Year</label>
+              <input type="number" class="form-control bg-dark text-light border-secondary" id="show-year" required>
+            </div>
+            <div class="col-md-3 d-flex align-items-end">
+              <button type="submit" class="btn btn-success w-100">Add Show</button>
+            </div>
           </div>
-          <div class="card-body">
-            <form id="add-show-form">
-              <div class="row g-3">
-                <div class="col-md-4">
-                  <label class="form-label text-light">Title</label>
-                  <input type="text" mind="1500" class="form-control bg-dark text-light border-secondary" id="show-title" required>
-                </div>
-                <div class="col-md-3">
-                  <label class="form-label text-light">Genre</label>
-                  <input type="text" min="1500" class="form-control bg-dark text-light border-secondary" id="show-genre" required>
-                </div>
-                <div class="col-md-2">
-                  <label class="form-label text-light">Year</label>
-                  <input type="number" min="1500" class="form-control bg-dark text-light border-secondary" id="show-year" required>
-                </div>
-                <div class="col-md-3 d-flex align-items-end">
-                <button type="submit" class="btn btn-success w-100">Add Show</button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
+        </form>
+      </div>
+    </div>
+    <table class="table table-dark table-striped table-hover">
       <thead>
         <tr>
           <th>Rank</th>
@@ -338,7 +338,7 @@
           </td>
         </tr>
       </tbody>
-    </table> 
+    </table>
   </div>
 </div>
 </div><!-- /app-panel -->
